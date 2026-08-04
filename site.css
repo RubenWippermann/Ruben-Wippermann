@@ -228,3 +228,8 @@
 /* Sicherheitsnetz: lange deutsche Komposita in Überschriften immer umbrechen
    (verhindert horizontalen Überlauf auf schmalen Geräten) */
 h1, h2, h3, h4, h5, h6, dt, th { overflow-wrap: break-word; -webkit-hyphens: auto; hyphens: auto; }
+
+/* Echtes Wippermann-Wappen im Kopfbereich statt Text-Kürzel */
+.brand__logo { height: 40px; width: auto; display: block; }
+.footer__brand .brand__logo { height: 34px; }
+@media (max-width: 520px) { .brand__logo { height: 34px; } }
