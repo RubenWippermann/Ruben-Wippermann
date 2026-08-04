@@ -7,4 +7,4 @@ Disallow: /
 # Nach Go-Live vorgesehen:
 # User-agent: *
 # Allow: /
-# Sitemap: https://ruben-wippermann.de/sitemap.xml
+# Sitemap: https://www.ruben-wippermann.de/sitemap.xml
