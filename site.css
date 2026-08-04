@@ -224,3 +224,7 @@
 
 /* Firmenlogos in den Unternehmenskarten */
 .clogo { height: 34px; width: auto; max-width: 170px; object-fit: contain; display: block; margin: 2px 0 10px; }
+
+/* Sicherheitsnetz: lange deutsche Komposita in Überschriften immer umbrechen
+   (verhindert horizontalen Überlauf auf schmalen Geräten) */
+h1, h2, h3, h4, h5, h6, dt, th { overflow-wrap: break-word; -webkit-hyphens: auto; hyphens: auto; }
