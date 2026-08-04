@@ -1,0 +1,14 @@
+# INTERNE Dokumente – NICHT ins öffentliche Repo (bleiben nur lokal)
+KONZEPT-RUBEN-PRIVAT.md
+SEITENBAUM.md
+INHALTE-TODO.md
+GO-LIVE.md
+BILDER-UND-LOGOS-BRIEFING.md
+entwurf-autor.html
+scripts/
+
+# System
+.DS_Store
+
+# Rubens private Kontaktdaten – nur lokal
+IMPRESSUMSDATEN-VON-RUBEN.md

@@ -1,0 +1,10 @@
+# Solange die Seite nicht live ist: komplette Indexierung ausschließen.
+# VOR echtem Go-Live: dieser Block wird durch die freigegebene Variante ersetzt
+# (siehe INHALTE-TODO.md → "Vor Go-Live").
+User-agent: *
+Disallow: /
+
+# Nach Go-Live vorgesehen:
+# User-agent: *
+# Allow: /
+# Sitemap: https://ruben-wippermann.de/sitemap.xml

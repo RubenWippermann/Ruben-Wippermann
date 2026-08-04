@@ -1,0 +1,226 @@
+/* =========================================================================
+   ruben-wippermann.de – Website-spezifische Ergänzungen
+   Baut auf styles.css auf (nutzt dessen CSS-Variablen). Blautöne.
+   ========================================================================= */
+
+/* ---------------------------------------------------------- Hero mit Foto */
+.hero__portrait--photo {
+  aspect-ratio: 4 / 5;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.25);
+  background: var(--blue-800);
+}
+.hero__portrait--photo img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 12%; }
+
+/* -------------------------------------------------------------- Sonnenblume */
+.sunflower {
+  width: 1em; height: 1em; display: inline-block; vertical-align: -0.15em;
+  transform-origin: 50% 50%;
+  animation: sunflower-spin 18s linear infinite;
+}
+.sunflower svg { width: 100%; height: 100%; display: block; }
+.sunflower--lg { width: 84px; height: 84px; }
+.sunflower--hero { width: 30px; height: 30px; animation-duration: 24s; }
+
+@keyframes sunflower-spin { to { transform: rotate(360deg); } }
+/* Rücksicht auf Nutzer, die Animationen reduzieren möchten */
+@media (prefers-reduced-motion: reduce) {
+  .sunflower { animation: none; }
+}
+
+.politik-eyebrow { display: inline-flex; align-items: center; gap: 10px; }
+
+/* ---------------------------------------------------------------- Media/Split */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 42px; align-items: center; }
+.split--reverse .split__media { order: 2; }
+.split__media {
+  border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--line);
+  box-shadow: var(--shadow); aspect-ratio: 4 / 3; background: var(--surface-2);
+}
+.split__media img { width: 100%; height: 100%; object-fit: cover; }
+.split__body h2 { margin-top: 0; }
+
+/* --------------------------------------------------------- Themen (Politik) */
+.theme-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.theme {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  overflow: hidden; box-shadow: var(--shadow); transition: transform .15s ease, box-shadow .2s;
+}
+.theme:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.theme__img { aspect-ratio: 16 / 10; background: var(--surface-2); overflow: hidden; }
+.theme__img img { width: 100%; height: 100%; object-fit: cover; }
+.theme__body { padding: 18px 20px 22px; }
+.theme__body h3 { margin: 0 0 6px; font-size: 1.06rem; }
+.theme__body p { margin: 0; color: var(--muted); font-size: .94rem; }
+
+/* --------------------------------------------------------------- Unternehmen */
+.company-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+.company {
+  display: grid; grid-template-columns: 118px 1fr; gap: 0;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  overflow: hidden; box-shadow: var(--shadow); transition: transform .15s ease, box-shadow .2s, border-color .2s;
+}
+.company:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--blue-200); }
+.company__img { background: var(--surface-2); overflow: hidden; }
+.company__img img { width: 100%; height: 100%; object-fit: cover; }
+.company__body { padding: 20px 22px; }
+.company__body h3 { margin: 0 0 4px; font-size: 1.12rem; }
+.company__kicker { font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--primary); }
+.company__body p { margin: 8px 0 0; color: var(--muted); font-size: .93rem; }
+
+/* ------------------------------------------------------------------ Angebot */
+.offer {
+  display: grid; grid-template-columns: 1.1fr .9fr; gap: 0; overflow: hidden;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+.offer--reverse .offer__media { order: 2; }
+.offer__media { background: var(--surface-2); overflow: hidden; min-height: 260px; }
+.offer__media img { width: 100%; height: 100%; object-fit: cover; }
+.offer__body { padding: 32px; }
+.offer__list { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 10px; }
+.offer__list li { display: flex; gap: 10px; align-items: flex-start; color: var(--ink-soft); font-size: .96rem; }
+.offer__list svg { flex: 0 0 auto; width: 20px; height: 20px; color: var(--primary); margin-top: 2px; }
+
+/* ------------------------------------------------------------------- Divider */
+.divider { height: 1px; background: var(--line); border: 0; margin: 0; }
+
+/* --------------------------------------------------------- Entwurf-Markierung */
+.draft-banner {
+  background: repeating-linear-gradient(45deg, var(--blue-50), var(--blue-50) 12px, #fff 12px, #fff 24px);
+  border: 1px dashed var(--blue-300); border-radius: var(--radius);
+  padding: 14px 18px; color: var(--ink-soft); font-size: .9rem; margin-bottom: 22px;
+}
+@media (prefers-color-scheme: dark) {
+  .draft-banner { background: rgba(59,130,246,.08); }
+}
+
+/* ------------------------------------------------------------- Responsive */
+@media (max-width: 900px) {
+  .split, .offer { grid-template-columns: 1fr; }
+  .split--reverse .split__media, .offer--reverse .offer__media { order: 0; }
+  .theme-grid { grid-template-columns: repeat(2, 1fr); }
+  .company-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .theme-grid { grid-template-columns: 1fr; }
+  .company { grid-template-columns: 1fr; }
+  .company__img { aspect-ratio: 16/9; }
+}
+
+/* ---------------------------------------------------- Unterseiten-Header */
+.subhero {
+  background:
+    radial-gradient(800px 400px at 82% -20%, rgba(59,130,246,.30), transparent 60%),
+    linear-gradient(160deg, var(--blue-800), var(--blue-600));
+  color: #eaf1fc; padding: 64px 0 56px;
+}
+.subhero__crumb { font-size: .82rem; color: #a9c8fb; margin-bottom: 12px; }
+.subhero__crumb a { color: #cfe0fb; }
+.subhero h1 { color:#fff; font-size: clamp(1.9rem,4vw,2.9rem); line-height:1.08; margin:0 0 14px; letter-spacing:-.02em; }
+.subhero p { color:#cfe0fb; font-size:1.1rem; max-width:54ch; margin:0; }
+.subhero .politik-eyebrow { color:#dbe8ff; margin-bottom:14px; }
+
+/* Textkarte ohne Bild (z. B. Euroblood ohne Foto) */
+.company--text { grid-template-columns: 1fr; }
+.company--text .company__body { padding: 24px 24px; }
+
+/* „Mehr erfahren"-Link */
+.more { display:inline-flex; align-items:center; gap:7px; font-weight:650; margin-top:14px; }
+.more::after { content:"→"; }
+
+/* Presse-Downloadliste */
+.press-list { list-style:none; padding:0; margin:0; display:grid; gap:12px; }
+.press-list li { display:flex; justify-content:space-between; align-items:center; gap:16px;
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:14px 18px; }
+
+/* Navigation früher einklappen (verhindert abgeschnittene Menüpunkte 640–900px) */
+@media (max-width: 900px) {
+  .nav__links { display: none; }
+  .nav__links.is-open {
+    display: flex; position: absolute; top: 68px; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 4px; padding: 12px 16px 18px;
+    background: var(--bg); border-bottom: 1px solid var(--line); box-shadow: var(--shadow);
+  }
+  .nav__toggle { display: grid; place-items: center; }
+}
+@media (max-width: 520px) { .brand__name small { display: none; } }
+
+/* Hero auf Mobil kompakter (weniger leerer Abstand oben) */
+@media (max-width: 640px) {
+  .hero__inner { padding: 48px 0 56px; }
+  .subhero { padding: 44px 0 40px; }
+}
+
+/* =======================================================================
+   Aufhellung: heller & freundlicher (weniger dunkles Blau)
+   ======================================================================= */
+.hero {
+  background:
+    radial-gradient(1000px 520px at 80% -10%, rgba(255,255,255,.28), transparent 60%),
+    linear-gradient(155deg, #2563d9 0%, #3b82f6 55%, #6aa8fb 100%) !important;
+}
+.hero__lead { color: #f1f6ff; }
+.hero h1 .accent { color: #eaf2ff; }
+.subhero {
+  background:
+    radial-gradient(760px 380px at 82% -20%, rgba(255,255,255,.24), transparent 60%),
+    linear-gradient(160deg, #2a66db, #4f8ff7) !important;
+}
+.footer { background: #143a73 !important; }
+.cta { background: linear-gradient(150deg, #2563d9, #3b82f6) !important; }
+
+/* =======================================================================
+   Politik-Seite in Grün (Bündnis 90/Die Grünen), Rest bleibt Blau
+   ======================================================================= */
+.gruen {
+  --primary: #3f8f2e;
+  --primary-strong: #2f6f22;
+  --ring: rgba(63,143,46,.35);
+}
+.gruen .subhero {
+  background:
+    radial-gradient(760px 380px at 82% -20%, rgba(255,255,255,.22), transparent 60%),
+    linear-gradient(160deg, #2f7d29, #59b93f) !important;
+}
+.gruen .sunflower { animation-duration: 16s; }
+.gruen .section__eyebrow,
+.gruen .more { color: var(--primary); }
+.gruen .cta { background: linear-gradient(150deg, #2f7d29, #3f8f2e) !important; }
+.gruen .theme:hover { box-shadow: var(--shadow-lg); }
+.gruen .btn--primary { background: var(--primary); }
+.gruen .btn--primary:hover { background: var(--primary-strong); }
+
+/* =======================================================================
+   Immer heller Auftritt – Dunkel-Modus des Systems NICHT übernehmen
+   (Ruben wünscht durchgehend hell & freundlich)
+   ======================================================================= */
+:root { color-scheme: light; }
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #ffffff; --bg-soft: #f4f8ff; --surface: #ffffff; --surface-2: #f0f5ff;
+    --ink: #0b1f3a; --ink-soft: #33456a; --muted: #5b6b8a; --line: #dce6f7;
+    --primary: #1e5bd6; --primary-strong: #16409a; --primary-ink: #ffffff;
+    --ring: rgba(30,91,214,.35);
+    --shadow: 0 10px 30px -12px rgba(9,30,66,.20);
+    --shadow-lg: 0 30px 60px -20px rgba(9,30,66,.30);
+  }
+  .card__icon { background: var(--blue-50); }
+  .card__tag { background: var(--blue-50); }
+  .note, .draft-banner { background: var(--blue-50); }
+}
+/* Grün-Seite: auch im Dunkelmodus grüner Primärton */
+.gruen { color-scheme: light; }
+
+/* Grüne Kopfzeile: passende (grünliche) Textfarben statt Blau */
+.gruen .subhero__crumb { color: #d7f0cf; }
+.gruen .subhero__crumb a { color: #eaffe4; }
+.gruen .subhero p { color: #eaf7e4; }
+.gruen .subhero .politik-eyebrow { color: #eaffe4; }
+
+/* Neuer Hochformat-Hero (A1): Ausschnitt neutral/mittig-oben */
+.hero__portrait--photo img { object-position: 50% 18%; }
+
+/* Firmenlogos in den Unternehmenskarten */
+.clogo { height: 34px; width: auto; max-width: 170px; object-fit: contain; display: block; margin: 2px 0 10px; }
