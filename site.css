@@ -233,3 +233,56 @@ h1, h2, h3, h4, h5, h6, dt, th { overflow-wrap: break-word; -webkit-hyphens: aut
 .brand__logo { height: 40px; width: auto; display: block; }
 .footer__brand .brand__logo { height: 34px; }
 @media (max-width: 520px) { .brand__logo { height: 34px; } }
+
+/* =======================================================================
+   THEME: Silber / Blau · Editorial-Premium (überschreibt den alten Look)
+   ======================================================================= */
+:root{
+  --bg:#f5f7fa; --bg-soft:#eceff5; --surface:#ffffff; --surface-2:#f1f4f9;
+  --ink:#1b2536; --ink-soft:#3b4759; --muted:#6d7787; --line:#dbe1ea;
+  --primary:#2f4f86; --primary-strong:#24406e; --primary-ink:#ffffff;
+  --ring:rgba(47,79,134,.30);
+  --shadow:0 10px 30px -14px rgba(27,37,54,.22);
+  --shadow-lg:0 30px 60px -22px rgba(27,37,54,.30);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#f5f7fa; --bg-soft:#eceff5; --surface:#ffffff; --surface-2:#f1f4f9;
+    --ink:#1b2536; --ink-soft:#3b4759; --muted:#6d7787; --line:#dbe1ea;
+    --primary:#2f4f86; --primary-strong:#24406e; --primary-ink:#ffffff;
+    --ring:rgba(47,79,134,.30);
+    --shadow:0 10px 30px -14px rgba(27,37,54,.22);
+    --shadow-lg:0 30px 60px -22px rgba(27,37,54,.30);
+  }
+}
+/* Editorial: Serifen-Headlines, ruhige Sans-Fließtexte */
+h1,h2,h3,.hero h1,.subhero h1{
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+  letter-spacing:-.01em;
+}
+/* Hero: tiefes Navy mit dezentem Silber-Schimmer, kein Grellblau */
+.hero{
+  background:
+    radial-gradient(900px 460px at 82% -10%, rgba(200,214,235,.18), transparent 60%),
+    linear-gradient(155deg,#16203a 0%,#22304f 55%,#2c3c60 100%) !important;
+}
+.hero__lead{ color:#e7ecf4; }
+.hero h1 .accent{ color:#b9c6dc; }
+.hero__portrait--photo{ border-color:rgba(200,214,235,.35); }
+/* Unterseiten-Header: gleiches Navy */
+.subhero{
+  background:
+    radial-gradient(760px 380px at 82% -20%, rgba(200,214,235,.16), transparent 60%),
+    linear-gradient(160deg,#16203a,#26365a) !important;
+}
+.subhero__crumb{ color:#aab6c9; } .subhero__crumb a{ color:#d6deea; }
+.subhero p{ color:#dfe5ee; }
+/* Footer + CTA in Navy */
+.footer{ background:#131b2e !important; }
+.cta{ background:linear-gradient(150deg,#1c294a,#2f4f86) !important; }
+/* Silber-Hairline oben auf Karten für Premium-Anmutung */
+.card, .company, .theme, .offer, .press-list li{ border-color:var(--line); }
+.section__eyebrow{ color:var(--primary); }
+/* Buttons */
+.btn--primary{ background:var(--primary); } .btn--primary:hover{ background:var(--primary-strong); }
+/* Grün-Seite (Politik) behält grünen Akzent auf Silber/Navy-Basis */
