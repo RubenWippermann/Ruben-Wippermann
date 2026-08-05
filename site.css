@@ -286,3 +286,7 @@ h1,h2,h3,.hero h1,.subhero h1{
 /* Buttons */
 .btn--primary{ background:var(--primary); } .btn--primary:hover{ background:var(--primary-strong); }
 /* Grün-Seite (Politik) behält grünen Akzent auf Silber/Navy-Basis */
+
+/* Politik-Themen ohne Foto: Text-Karten mit farbigem Akzent */
+.theme--text .theme__body { border-top: 3px solid var(--primary); padding: 20px 22px 24px; }
+.theme--text .theme__body h3 { font-size: 1.14rem; }
