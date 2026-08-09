@@ -1,10 +1,8 @@
-# Solange die Seite nicht live ist: komplette Indexierung ausschließen.
-# VOR echtem Go-Live: dieser Block wird durch die freigegebene Variante ersetzt
-# (siehe INHALTE-TODO.md → "Vor Go-Live").
+# ruben-wippermann.de — Kandidaten- und Unternehmerseite.
 User-agent: *
-Disallow: /
+Allow: /
 
-# Nach Go-Live vorgesehen:
-# User-agent: *
-# Allow: /
-# Sitemap: https://www.ruben-wippermann.de/sitemap.xml
+# Entwurfsseite bleibt ausgenommen.
+Disallow: /entwurf-autor.html
+
+Sitemap: https://www.ruben-wippermann.de/sitemap.xml
