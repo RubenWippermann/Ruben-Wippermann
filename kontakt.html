@@ -44,13 +44,13 @@
           <div><small>Social Media</small><strong><a href="https://www.facebook.com/rubenjosef.wippermann/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/rwippermann/" target="_blank" rel="noopener">Instagram</a></strong></div>
         </div>
       </div>
-      <form class="form" onsubmit="return false" aria-label="Kontaktformular">
+      <form class="form" aria-label="Kontaktformular">
         <div><label for="k-name">Name</label><input id="k-name" name="name" type="text"></div>
         <div><label for="k-email">E-Mail</label><input id="k-email" name="email" type="email"></div>
         <div><label for="k-msg">Nachricht</label><textarea id="k-msg" name="message"></textarea></div>
         <div class="hp" aria-hidden="true"><label>Bitte frei lassen<input name="website" tabindex="-1" autocomplete="off"></label></div>
+        <label class="form__consent"><input type="checkbox" name="consent" required> Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Angaben zur Bearbeitung meiner Anfrage zu.</label>
         <button class="btn btn--primary" type="submit">Nachricht senden</button>
-        <p style="margin:2px 0 0;color:var(--muted);font-size:.82rem">Noch ohne Versand – E-Mail-Anbindung folgt nach Domain-Einrichtung.</p>
       </form>
     </div>
   </div></section>
@@ -59,5 +59,5 @@
 <footer class="footer"><div class="container">
   <div class="footer__bottom" style="border:0;padding-top:0"><span>© 2026 Ruben Wippermann · Duderstadt</span><span><a href="index.html">Start</a> · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="agb.html">AGB</a></span></div>
 </div></footer>
-
+<script src="assets/forms.js" defer></script>
 </html>

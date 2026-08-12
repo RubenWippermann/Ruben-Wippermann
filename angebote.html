@@ -28,8 +28,7 @@
 
 <main>
   <section><div class="container">
-    <div class="offer">
-      <div class="offer__media"><img src="assets/img/07-praesentation-vor-fuehrungskraeften.jpg" alt="Ruben Wippermann bei einer Präsentation vor Führungskräften" loading="lazy"></div>
+    <div class="offer offer--nomedia">
       <div class="offer__body">
         <h2 style="margin-top:0">Leistungen</h2>
         <ul class="offer__list">
@@ -42,7 +41,7 @@
       </div>
     </div>
 
-    <form class="form" style="margin-top:26px" onsubmit="return false" aria-label="Anfrage für Unternehmen">
+    <form class="form" style="margin-top:26px" aria-label="Anfrage für Unternehmen">
       <p style="margin:0 0 4px;font-weight:650">Unverbindliche Anfrage</p>
       <div class="grid grid--2">
         <div><label for="b2b-org">Organisation / Schule</label><input id="b2b-org" name="org" type="text"></div>
@@ -54,11 +53,12 @@
       </div>
       <div><label for="b2b-msg">Nachricht</label><textarea id="b2b-msg" name="message"></textarea></div>
       <div class="hp" aria-hidden="true"><label>Bitte frei lassen<input name="website" tabindex="-1" autocomplete="off"></label></div>
+      <label class="form__consent"><input type="checkbox" name="consent" required> Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Angaben zur Bearbeitung meiner Anfrage zu.</label>
       <button class="btn btn--primary" type="submit">Anfrage senden</button>
-      <p style="margin:2px 0 0;color:var(--muted);font-size:.82rem">Noch ohne Versand – technische Anbindung an die Firmensoftware folgt.</p>
     </form>
   </div></section>
 </main>
+<script src="assets/forms.js" defer></script>
 
 <footer class="footer"><div class="container">
   <div class="footer__bottom" style="border:0;padding-top:0"><span>© 2026 Ruben Wippermann · Duderstadt</span><span><a href="index.html">Start</a> · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="agb.html">AGB</a></span></div>
