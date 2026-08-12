@@ -290,3 +290,112 @@ h1,h2,h3,.hero h1,.subhero h1{
 /* Politik-Themen ohne Foto: Text-Karten mit farbigem Akzent */
 .theme--text .theme__body { border-top: 3px solid var(--primary); padding: 20px 22px 24px; }
 .theme--text .theme__body h3 { font-size: 1.14rem; }
+
+/* =======================================================================
+   HELL & FREUNDLICH · Blass-Blau  (Vorbild: BWW-Seite, Blau statt Grün)
+   Letzter Block – überschreibt bewusst den dunklen Editorial-Look.
+   Ruben, 11.08.2026: „heller und freundlicher, das dunkle Blau ist drückend."
+   ======================================================================= */
+:root{
+  --bg:#f4f8fd; --bg-soft:#e6f0fb; --surface:#ffffff; --surface-2:#e3eefb;
+  --ink:#152238; --ink-soft:#394962; --muted:#66738a; --line:#d7e4f4;
+  --primary:#1f6fc0; --primary-strong:#17548f; --primary-ink:#ffffff;
+  --ring:rgba(31,111,192,.30);
+  --shadow:0 12px 28px -16px rgba(20,45,80,.22);
+  --shadow-lg:0 30px 60px -26px rgba(20,45,80,.30);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#f4f8fd; --bg-soft:#e6f0fb; --surface:#ffffff; --surface-2:#e3eefb;
+    --ink:#152238; --ink-soft:#394962; --muted:#66738a; --line:#d7e4f4;
+    --primary:#1f6fc0; --primary-strong:#17548f; --primary-ink:#ffffff;
+    --ring:rgba(31,111,192,.30);
+    --shadow:0 12px 28px -16px rgba(20,45,80,.22);
+    --shadow-lg:0 30px 60px -26px rgba(20,45,80,.30);
+  }
+}
+
+/* Freundliche, serifenlose Überschriften (statt Georgia-Serifen) */
+h1,h2,h3,.hero h1,.subhero h1{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Helvetica Neue",sans-serif;
+  font-weight:800; letter-spacing:-.02em;
+}
+/* Lange Komposita nur an echten Trennstellen brechen (kein „Defibrilla-tor") */
+h1,h2,.hero h1,.subhero h1{ -webkit-hyphens:manual; hyphens:manual; overflow-wrap:break-word; }
+
+/* Rundere, freundlichere Buttons */
+.btn{ border-radius:999px; padding:13px 24px; }
+
+/* ---- HERO: hell statt dunkel-navy ---- */
+.hero{
+  background:
+    radial-gradient(880px 500px at 85% -10%, rgba(31,111,192,.24), transparent 60%),
+    linear-gradient(165deg,#cfe4fa 0%, #e6f1fd 60%) !important;
+  color:var(--ink);
+}
+.hero::after{ display:none; }
+.hero__eyebrow{ background:#d3e6fb; border-color:#b3d2f1; color:var(--primary-strong); font-weight:700; }
+.hero__dot{ background:var(--primary); box-shadow:0 0 0 4px rgba(44,120,194,.18); }
+.hero h1{ color:var(--ink); }
+.hero h1 .accent{ color:var(--primary); }
+.hero__lead{ color:var(--ink-soft); }
+.hero__role{ background:#fff; border-color:var(--line); color:var(--ink-soft); }
+.hero__card{ background:#fff; border-color:var(--line); box-shadow:var(--shadow-lg); }
+.hero__card p{ color:var(--ink-soft); }
+.hero__portrait--photo{ border-color:var(--line); background:var(--surface-2); }
+/* Hero-Buttons für hellen Grund: erster gefüllt, zweiter Umriss */
+.hero__actions .btn{ background:#fff; color:var(--primary); border:1px solid #cfe1f5; box-shadow:var(--shadow); }
+.hero__actions .btn:hover{ background:#eaf3fc; }
+.hero__actions .btn:first-child{ background:var(--primary); color:#fff; border-color:transparent; }
+.hero__actions .btn:first-child:hover{ background:var(--primary-strong); }
+
+/* ---- Unterseiten-Header hell ---- */
+.subhero{
+  background:
+    radial-gradient(780px 400px at 85% -20%, rgba(31,111,192,.18), transparent 60%),
+    linear-gradient(160deg,#d6e8fb,#eaf3fd) !important;
+  color:var(--ink);
+}
+.subhero__crumb{ color:var(--muted); } .subhero__crumb a{ color:var(--primary); }
+.subhero h1{ color:var(--ink); }
+.subhero p{ color:var(--ink-soft); }
+.subhero .politik-eyebrow{ color:var(--primary); }
+
+/* Politik bleibt grün (Partei), aber ebenfalls hell & freundlich */
+.gruen .subhero{
+  background:
+    radial-gradient(720px 360px at 85% -20%, rgba(63,143,46,.12), transparent 60%),
+    linear-gradient(160deg,#edf7e9,#f6faf3) !important;
+  color:var(--ink);
+}
+.gruen .subhero__crumb{ color:var(--muted); } .gruen .subhero__crumb a{ color:#2f6f22; }
+.gruen .subhero h1{ color:var(--ink); }
+.gruen .subhero p{ color:var(--ink-soft); }
+.gruen .subhero .politik-eyebrow{ color:#2f6f22; }
+
+/* ---- Footer hell (macht das Navy-Wappen wieder sichtbar) ---- */
+.footer{ background:#eaf2fb !important; color:var(--ink-soft); border-top:1px solid var(--line); }
+.footer a{ color:var(--primary); }
+.footer h4{ color:var(--ink); }
+.footer__brand .brand__name{ color:var(--ink); }
+.footer__bottom{ border-top-color:var(--line); color:var(--muted); }
+
+/* ---- CTA: freundlicher Blau-Block (statt dunkel), weißer Button ---- */
+.cta{ background:linear-gradient(150deg,#2c78c2,#4f9bdd) !important; color:#fff; }
+.cta p{ color:#eaf3fc; }
+.cta .btn--light{ background:#fff; color:var(--primary); border-color:#fff; }
+.cta .btn--light:hover{ background:#eaf3fc; }
+
+/* ---- Kontakt-Button: weißer Text (Nav-Link-Regel hatte ihn grau gemacht) ---- */
+.nav__links a.nav__cta{ color:#fff; }
+.nav__links a.nav__cta:hover{ color:#fff; background:var(--primary-strong); }
+
+/* ---- Angebots-/Schwerpunkt-Karte ohne Bild: volle Breite, ruhig ---- */
+.offer--nomedia{ grid-template-columns:1fr; }
+.offer--nomedia .offer__body{ padding:34px 38px; }
+.offer--nomedia .offer__body h2{ margin-top:0; }
+
+/* ---- Hochformat-Bild (Rathaus): ganzes Gebäude zeigen, kein Beschnitt ---- */
+.split__media--tall{ aspect-ratio:3 / 4; background:var(--surface-2); align-self:stretch; }
+.split__media--tall img{ width:100%; height:100%; object-fit:cover; object-position:center; }
+@media (max-width: 900px){ .split__media--tall{ aspect-ratio:4 / 3; } }
