@@ -403,3 +403,61 @@ h1,h2,.hero h1,.subhero h1{ -webkit-hyphens:manual; hyphens:manual; overflow-wra
 .split__media--tall{ aspect-ratio:3 / 4; background:var(--surface-2); align-self:stretch; }
 .split__media--tall img{ width:100%; height:100%; object-fit:cover; object-position:center; }
 @media (max-width: 900px){ .split__media--tall{ aspect-ratio:4 / 3; } }
+
+/* =======================================================================
+   PREMIUM-POLITUR (2026-08-16) · Feinschliff für das Aushängeschild
+   ======================================================================= */
+
+/* Sanfte, konsistente Übergänge + Textauswahl */
+a, .btn, .card, .company, .theme, .clogo, .hero__role, .nav__links a { transition: color .18s ease, background .18s ease, border-color .18s ease, transform .18s ease, box-shadow .22s ease; }
+::selection { background: rgba(31,111,192,.18); color: var(--ink); }
+html { scroll-padding-top: 88px; }
+
+/* Zugängliche, sichtbare Fokus-States (Tastaturbedienung) */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, .btn:focus-visible {
+  outline: 3px solid rgba(31,111,192,.45); outline-offset: 2px; border-radius: 8px;
+}
+
+/* Navigation: feiner, premium */
+.nav { box-shadow: 0 1px 0 rgba(20,45,80,.04); }
+.nav__links a:hover { color: var(--primary); }
+.nav__cta { box-shadow: 0 6px 16px -8px rgba(31,111,192,.6); }
+
+/* Buttons: etwas mehr Tiefe + lebendigeres Anheben */
+.btn--primary { box-shadow: 0 8px 20px -10px rgba(31,111,192,.65); }
+.btn--primary:hover { transform: translateY(-1px); box-shadow: 0 12px 26px -10px rgba(31,111,192,.7); }
+.hero__actions .btn:first-child:hover { transform: translateY(-1px); }
+
+/* Karten: ruhiger Lift + zarter Blau-Rand beim Hover */
+.card:hover, .company:hover, .theme:hover { transform: translateY(-4px); border-color: rgba(31,111,192,.35); box-shadow: 0 26px 50px -26px rgba(20,45,80,.30); }
+.theme--text .theme__body { transition: border-color .18s ease; }
+
+/* „Mehr"-Link mit animiertem Pfeil */
+.more { position: relative; }
+.more::after { transition: transform .18s ease; }
+.more:hover { text-decoration: none; }
+.more:hover::after { transform: translateX(4px); }
+
+/* Hero: großzügiger & klarer auf großen Screens */
+@media (min-width: 901px){
+  .hero__inner { padding: 104px 0 108px; }
+  .hero h1 { font-size: clamp(2.4rem, 5.2vw, 3.8rem); }
+  .hero__lead { font-size: 1.2rem; }
+}
+.hero__card { transition: transform .25s ease, box-shadow .25s ease; }
+.hero__card:hover { transform: translateY(-3px); }
+
+/* Vertrauens-Leiste (Belege statt Behauptungen) */
+.trust { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
+.trust__row { display: flex; flex-wrap: wrap; gap: 14px 30px; align-items: center; justify-content: center;
+  padding: 20px 22px; max-width: var(--maxw); margin: 0 auto; }
+.trust__item { display: inline-flex; align-items: center; gap: 9px; font-size: .92rem; font-weight: 600; color: var(--ink-soft); }
+.trust__item svg { width: 18px; height: 18px; color: var(--primary); flex: 0 0 auto; }
+@media (max-width: 640px){ .trust__item { font-size: .84rem; } .trust__row { gap: 12px 18px; } }
+
+/* Firmenlogos: dezente Graustufe, Farbe beim Hover (premium) */
+.clogo { filter: saturate(.9); opacity: .96; }
+.company:hover .clogo { filter: none; opacity: 1; }
+
+/* Bilder generell weicher eingebettet */
+.split__media, .offer__media, .theme__img { box-shadow: inset 0 0 0 1px rgba(20,45,80,.04); }
