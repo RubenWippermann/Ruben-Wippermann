@@ -149,7 +149,7 @@
 
 /* Hero auf Mobil kompakter (weniger leerer Abstand oben) */
 @media (max-width: 640px) {
-  .hero__inner { padding: 48px 0 56px; }
+  .hero__inner { padding: 48px clamp(22px, 4.5vw, 48px) 56px; }
   .subhero { padding: 44px 0 40px; }
 }
 

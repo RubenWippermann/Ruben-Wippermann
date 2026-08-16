@@ -74,7 +74,7 @@ img { max-width: 100%; display: block; }
 a { color: var(--primary); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-.container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 22px; }
+.container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(22px, 4.5vw, 48px); }
 
 /* ------------------------------------------------------------------ Nav */
 .nav {
@@ -140,7 +140,7 @@ a:hover { text-decoration: underline; }
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background: radial-gradient(700px 340px at 12% 110%, rgba(106,162,247,.28), transparent 60%);
 }
-.hero__inner { position: relative; z-index: 1; padding: 92px 0 96px; display: grid; grid-template-columns: 1.25fr .95fr; gap: 48px; align-items: center; }
+.hero__inner { position: relative; z-index: 1; padding: 92px clamp(22px, 4.5vw, 48px) 96px; display: grid; grid-template-columns: 1.25fr .95fr; gap: 48px; align-items: center; }
 .hero__eyebrow {
   display: inline-flex; align-items: center; gap: 9px;
   background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22);
