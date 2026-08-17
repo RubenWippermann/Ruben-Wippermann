@@ -3,7 +3,6 @@
 
 User-agent: *
 Allow: /
-Disallow: /entwurf-autor.html
 
 # --- KI-/Antwort-Crawler ausdrücklich erlaubt ---
 User-agent: GPTBot

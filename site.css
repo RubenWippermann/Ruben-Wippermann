@@ -343,11 +343,28 @@ h1,h2,.hero h1,.subhero h1{ -webkit-hyphens:manual; hyphens:manual; overflow-wra
 .hero__card{ background:#fff; border-color:var(--line); box-shadow:var(--shadow-lg); }
 .hero__card p{ color:var(--ink-soft); }
 .hero__portrait--photo{ border-color:var(--line); background:var(--surface-2); }
-/* Hero-Buttons für hellen Grund: erster gefüllt, zweiter Umriss */
-.hero__actions .btn{ background:#fff; color:var(--primary); border:1px solid #cfe1f5; box-shadow:var(--shadow); }
-.hero__actions .btn:hover{ background:#eaf3fc; }
-.hero__actions .btn:first-child{ background:var(--primary); color:#fff; border-color:transparent; }
-.hero__actions .btn:first-child:hover{ background:var(--primary-strong); }
+/* Hero-CTA: EIN lauter Hauptknopf + Textlink als zweiter Weg (führt, statt wählen zu lassen) */
+.hero__actions{ align-items:center; gap:10px 22px; }
+.hero__actions .btn--primary{ background:var(--primary); color:#fff; border-color:transparent; box-shadow:var(--shadow); }
+.hero__actions .btn--primary:hover{ background:var(--primary-strong); }
+.hero__textlink{ font-weight:700; color:var(--primary); display:inline-flex; align-items:center; gap:6px; }
+.hero__textlink:hover{ text-decoration:underline; }
+
+/* Mitlaufende CTA-Leiste (nur mobil) – ein Tipp bis zur Anfrage */
+.cta-bar{ display:none; }
+@media (max-width: 820px){
+  .cta-bar{
+    display:flex; position:fixed; left:0; right:0; bottom:0; z-index:60;
+    align-items:center; justify-content:space-between; gap:12px;
+    padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
+    background:rgba(255,255,255,.96); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+    border-top:1px solid var(--line); box-shadow:0 -8px 22px -14px rgba(20,45,80,.5);
+  }
+  .cta-bar__txt{ font-weight:600; color:var(--ink); font-size:.92rem; }
+  .cta-bar__btn{ background:var(--primary); color:#fff; font-weight:700; padding:11px 18px; border-radius:999px; white-space:nowrap; box-shadow:var(--shadow); }
+  .cta-bar__btn:hover{ background:var(--primary-strong); }
+  body.has-cta-bar{ padding-bottom:70px; }
+}
 
 /* ---- Unterseiten-Header hell ---- */
 .subhero{
