@@ -412,6 +412,10 @@ h1,h2,.hero h1,.subhero h1{ -webkit-hyphens:manual; hyphens:manual; overflow-wra
 .offer--nomedia .offer__body{ padding:34px 38px; }
 .offer--nomedia .offer__body h2{ margin-top:0; }
 
+/* ---- Shop-Einbettung (PePa): Platzhalter bis zur Auslieferung ---- */
+#pepa-shop{ min-height:240px; }
+.shop-placeholder{ color:var(--muted); background:var(--surface-2); border:1px dashed var(--line); border-radius:var(--radius); padding:44px 22px; text-align:center; margin:0; font-size:.95rem; }
+
 /* ---- Datenschutz-Einwilligung unter Formularen ---- */
 .form__consent{ display:flex; gap:10px; align-items:flex-start; font-size:.86rem; color:var(--ink-soft); line-height:1.45; margin-top:4px; }
 .form__consent input{ margin-top:3px; flex:0 0 auto; width:16px; height:16px; accent-color:var(--primary); }
