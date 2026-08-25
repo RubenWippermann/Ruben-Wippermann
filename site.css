@@ -482,3 +482,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* Bilder generell weicher eingebettet */
 .split__media, .offer__media, .theme__img { box-shadow: inset 0 0 0 1px rgba(20,45,80,.04); }
+
+/* Telefon auf Kontaktseite zurückgestuft – Formular ist der bevorzugte Weg */
+.contact__method--muted { opacity: .68; background: transparent; }
