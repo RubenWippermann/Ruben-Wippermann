@@ -197,19 +197,15 @@
    (Ruben wünscht durchgehend hell & freundlich)
    ======================================================================= */
 :root { color-scheme: light; }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #ffffff; --bg-soft: #f4f8ff; --surface: #ffffff; --surface-2: #f0f5ff;
-    --ink: #0b1f3a; --ink-soft: #33456a; --muted: #5b6b8a; --line: #dce6f7;
-    --primary: #1e5bd6; --primary-strong: #16409a; --primary-ink: #ffffff;
-    --ring: rgba(30,91,214,.35);
-    --shadow: 0 10px 30px -12px rgba(9,30,66,.20);
-    --shadow-lg: 0 30px 60px -20px rgba(9,30,66,.30);
-  }
-  .card__icon { background: var(--blue-50); }
-  .card__tag { background: var(--blue-50); }
-  .note, .draft-banner { background: var(--blue-50); }
-}
+/* 🔴 AUFGERÄUMT 25.08.: Der alte @media(prefers-color-scheme:dark)-Block mit der
+   blauen Farbpalette stand hier, war aber tot — zwei spätere unconditional
+   :root{}-Blöcke (Zeile ~240 "Silber/Editorial" und der tatsächlich aktive letzte
+   Block "HELL & FREUNDLICH" weiter unten) überschreiben dieselben Custom
+   Properties danach in JEDEM Fall, auch im Dunkelmodus. Entfernt, keine
+   sichtbare Wirkung verloren (WCAG-Kontrastprüfung, Auftrag Koordinator). */
+.card__icon { background: var(--blue-50); }
+.card__tag { background: var(--blue-50); }
+.note, .draft-banner { background: var(--blue-50); }
 /* Grün-Seite: auch im Dunkelmodus grüner Primärton */
 .gruen { color-scheme: light; }
 
@@ -234,27 +230,14 @@ h1, h2, h3, h4, h5, h6, dt, th { overflow-wrap: break-word; -webkit-hyphens: aut
 .footer__brand .brand__logo { height: 34px; }
 @media (max-width: 520px) { .brand__logo { height: 34px; } }
 
-/* =======================================================================
-   THEME: Silber / Blau · Editorial-Premium (überschreibt den alten Look)
-   ======================================================================= */
-:root{
-  --bg:#f5f7fa; --bg-soft:#eceff5; --surface:#ffffff; --surface-2:#f1f4f9;
-  --ink:#1b2536; --ink-soft:#3b4759; --muted:#6d7787; --line:#dbe1ea;
-  --primary:#2f4f86; --primary-strong:#24406e; --primary-ink:#ffffff;
-  --ring:rgba(47,79,134,.30);
-  --shadow:0 10px 30px -14px rgba(27,37,54,.22);
-  --shadow-lg:0 30px 60px -22px rgba(27,37,54,.30);
-}
-@media (prefers-color-scheme: dark){
-  :root{
-    --bg:#f5f7fa; --bg-soft:#eceff5; --surface:#ffffff; --surface-2:#f1f4f9;
-    --ink:#1b2536; --ink-soft:#3b4759; --muted:#6d7787; --line:#dbe1ea;
-    --primary:#2f4f86; --primary-strong:#24406e; --primary-ink:#ffffff;
-    --ring:rgba(47,79,134,.30);
-    --shadow:0 10px 30px -14px rgba(27,37,54,.22);
-    --shadow-lg:0 30px 60px -22px rgba(27,37,54,.30);
-  }
-}
+/* 🔴 AUFGERÄUMT 25.08.: Der "THEME: Silber / Blau · Editorial-Premium"
+   :root{}-Block (Farbwerte) stand hier, war aber ebenfalls tot — der
+   nachfolgende Block "HELL & FREUNDLICH · Blass-Blau" (weiter unten, Kommentar
+   dort: "Letzter Block – überschreibt bewusst...") setzt dieselben Custom
+   Properties danach erneut, unconditional, und gewinnt daher immer. Entfernt
+   (Folgeaufräumung zum WCAG-Kontrastfix, Auftrag Koordinator). Die
+   Editorial-Serifen-Regel direkt darunter bleibt unangetastet — die ist ein
+   eigener, hier nicht geprüfter Punkt. */
 /* Editorial: Serifen-Headlines, ruhige Sans-Fließtexte */
 h1,h2,h3,.hero h1,.subhero h1{
   font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
@@ -298,7 +281,7 @@ h1,h2,h3,.hero h1,.subhero h1{
    ======================================================================= */
 :root{
   --bg:#f4f8fd; --bg-soft:#e6f0fb; --surface:#ffffff; --surface-2:#e3eefb;
-  --ink:#152238; --ink-soft:#394962; --muted:#66738a; --line:#d7e4f4;
+  --ink:#152238; --ink-soft:#394962; --muted:#54607a; --line:#d7e4f4;
   --primary:#1f6fc0; --primary-strong:#17548f; --primary-ink:#ffffff;
   --ring:rgba(31,111,192,.30);
   --shadow:0 12px 28px -16px rgba(20,45,80,.22);
@@ -307,7 +290,7 @@ h1,h2,h3,.hero h1,.subhero h1{
 @media (prefers-color-scheme: dark){
   :root{
     --bg:#f4f8fd; --bg-soft:#e6f0fb; --surface:#ffffff; --surface-2:#e3eefb;
-    --ink:#152238; --ink-soft:#394962; --muted:#66738a; --line:#d7e4f4;
+    --ink:#152238; --ink-soft:#394962; --muted:#54607a; --line:#d7e4f4;
     --primary:#1f6fc0; --primary-strong:#17548f; --primary-ink:#ffffff;
     --ring:rgba(31,111,192,.30);
     --shadow:0 12px 28px -16px rgba(20,45,80,.22);
