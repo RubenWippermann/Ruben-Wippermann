@@ -326,3 +326,17 @@ section { padding: 84px 0; }
 }
 .timeline__title { margin: 0 0 4px; font-size: 1.08rem; font-weight: 650; color: var(--ink); }
 .timeline__text { margin: 0; color: var(--muted); font-size: .96rem; }
+
+/* ------------------------------------------------------ Zahlen & Fakten */
+.stats { padding: 54px 0; background: var(--blue-900); }
+.stats__grid {
+  list-style: none; margin: 0; padding: 0; display: grid;
+  grid-template-columns: repeat(4, 1fr); gap: 28px; text-align: center;
+}
+.stat { display: flex; flex-direction: column; gap: 6px; }
+.stat__num {
+  font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; letter-spacing: -.01em;
+  color: #fff; font-variant-numeric: tabular-nums;
+}
+.stat__label { font-size: .86rem; color: var(--blue-200); line-height: 1.4; }
+@media (max-width: 900px) { .stats__grid { grid-template-columns: repeat(2, 1fr); gap: 30px 20px; } }
