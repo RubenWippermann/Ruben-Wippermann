@@ -303,4 +303,26 @@ section { padding: 84px 0; }
   .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
   .cta { padding: 34px 22px; }
   section { padding: 60px 0; }
+  .timeline::before { left: 9px; }
+  .timeline__item { padding-left: 34px; }
+  .timeline__dot { left: 2px; }
 }
+
+/* --------------------------------------------------------- Werdegang */
+.timeline { position: relative; margin: 0; padding: 0; list-style: none; max-width: 74ch; }
+.timeline::before {
+  content: ""; position: absolute; left: 15px; top: 6px; bottom: 6px; width: 2px;
+  background: var(--line);
+}
+.timeline__item { position: relative; padding-left: 46px; }
+.timeline__item + .timeline__item { margin-top: 30px; }
+.timeline__dot {
+  position: absolute; left: 8px; top: 4px; width: 16px; height: 16px; border-radius: 50%;
+  background: var(--surface); border: 3px solid var(--primary); box-shadow: 0 0 0 4px var(--bg-soft);
+}
+.timeline__year {
+  display: inline-block; font-weight: 700; font-size: .82rem; letter-spacing: .04em;
+  color: var(--primary); text-transform: uppercase; margin-bottom: 4px;
+}
+.timeline__title { margin: 0 0 4px; font-size: 1.08rem; font-weight: 650; color: var(--ink); }
+.timeline__text { margin: 0; color: var(--muted); font-size: .96rem; }
