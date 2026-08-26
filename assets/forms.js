@@ -1,14 +1,11 @@
 /* Formular-Anbindung an die Firmensoftware.
    Endpunkt: POST https://software-wippermann.de/api/inhouse-anfrage
-   CORS-fähig, ohne Token. Legt ein Ticket (INH-XXXXXXXX) über org "ruben" an.
-   Pflichtfelder der API: firma, email. Honeypot-Feld: website.
-   Bis 25.08.2026 lief das fälschlich über org "bww" — persönliche Anfragen
-   landeten damit in der Ticket-Warteschlange der Firma BWW. org "ruben"
-   bildet auf org_ruben_wippermann ab (Software-repo/worker/public.ts). */
+   CORS-fähig, ohne Token. Legt ein Ticket (INH-XXXXXXXX) an.
+   Pflichtfelder der API: firma, email. Honeypot-Feld: website. */
 (function () {
   "use strict";
   var ENDPOINT = "https://software-wippermann.de/api/inhouse-anfrage";
-  var ORG = "ruben"; // eigener Slug seit 25.08.2026, org_ruben_wippermann statt BWW
+  var ORG = "ruben";
 
   function val(fd, name) {
     var v = fd.get(name);
