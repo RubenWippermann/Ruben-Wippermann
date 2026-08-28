@@ -230,40 +230,11 @@ h1, h2, h3, h4, h5, h6, dt, th { overflow-wrap: break-word; -webkit-hyphens: aut
 .footer__brand .brand__logo { height: 34px; }
 @media (max-width: 520px) { .brand__logo { height: 34px; } }
 
-/* 🔴 AUFGERÄUMT 25.08.: Der "THEME: Silber / Blau · Editorial-Premium"
-   :root{}-Block (Farbwerte) stand hier, war aber ebenfalls tot — der
-   nachfolgende Block "HELL & FREUNDLICH · Blass-Blau" (weiter unten, Kommentar
-   dort: "Letzter Block – überschreibt bewusst...") setzt dieselben Custom
-   Properties danach erneut, unconditional, und gewinnt daher immer. Entfernt
-   (Folgeaufräumung zum WCAG-Kontrastfix, Auftrag Koordinator). Die
-   Editorial-Serifen-Regel direkt darunter bleibt unangetastet — die ist ein
-   eigener, hier nicht geprüfter Punkt. */
-/* Editorial: Serifen-Headlines, ruhige Sans-Fließtexte */
-h1,h2,h3,.hero h1,.subhero h1{
-  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
-  letter-spacing:-.01em;
-}
-/* Hero: tiefes Navy mit dezentem Silber-Schimmer, kein Grellblau */
-.hero{
-  background:
-    radial-gradient(900px 460px at 82% -10%, rgba(200,214,235,.18), transparent 60%),
-    linear-gradient(155deg,#16203a 0%,#22304f 55%,#2c3c60 100%) !important;
-}
-.hero__lead{ color:#e7ecf4; }
-.hero h1 .accent{ color:#b9c6dc; }
-.hero__portrait--photo{ border-color:rgba(200,214,235,.35); }
-/* Unterseiten-Header: gleiches Navy */
-.subhero{
-  background:
-    radial-gradient(760px 380px at 82% -20%, rgba(200,214,235,.16), transparent 60%),
-    linear-gradient(160deg,#16203a,#26365a) !important;
-}
-.subhero__crumb{ color:#aab6c9; } .subhero__crumb a{ color:#d6deea; }
-.subhero p{ color:#dfe5ee; }
-/* Footer + CTA in Navy */
-.footer{ background:#131b2e !important; }
-.cta{ background:linear-gradient(150deg,#1c294a,#2f4f86) !important; }
-/* Silber-Hairline oben auf Karten für Premium-Anmutung */
+/* 🔴 AUFGERÄUMT 27.08.: Der "Editorial: Serifen-Headlines"-Block (Georgia-
+   Schrift) plus das dazugehörige dunkle Navy-Theme (.hero/.subhero/.footer/
+   .cta) standen hier, waren aber tot — der spätere "HELL & FREUNDLICH"-Block
+   (weiter unten) setzt dieselben Selektoren erneut mit !important und
+   gewinnt daher immer. Entfernt (Design-Review-Auftrag, ui-ux-pro-max-Fund). */
 .card, .company, .theme, .offer, .press-list li{ border-color:var(--line); }
 .section__eyebrow{ color:var(--primary); }
 /* Buttons */
