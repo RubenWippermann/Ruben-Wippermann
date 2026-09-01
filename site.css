@@ -187,7 +187,7 @@
 .gruen .sunflower { animation-duration: 16s; }
 .gruen .section__eyebrow,
 .gruen .more { color: var(--primary); }
-.gruen .cta { background: linear-gradient(150deg, #2f7d29, #3f8f2e) !important; }
+.gruen .cta { background: linear-gradient(150deg, #2f6f22, #357528) !important; }
 .gruen .theme:hover { box-shadow: var(--shadow-lg); }
 .gruen .btn--primary { background: var(--primary); }
 .gruen .btn--primary:hover { background: var(--primary-strong); }
@@ -352,8 +352,8 @@ h1,h2,.hero h1,.subhero h1{ -webkit-hyphens:manual; hyphens:manual; overflow-wra
 .footer__bottom{ border-top-color:var(--line); color:var(--muted); }
 
 /* ---- CTA: freundlicher Blau-Block (statt dunkel), weißer Button ---- */
-.cta{ background:linear-gradient(150deg,#2c78c2,#4f9bdd) !important; color:#fff; }
-.cta p{ color:#eaf3fc; }
+.cta{ background:linear-gradient(150deg,var(--primary),var(--primary-strong)) !important; color:#fff; }
+.cta p{ color:#fff; }
 .cta .btn--light{ background:#fff; color:var(--primary); border-color:#fff; }
 .cta .btn--light:hover{ background:#eaf3fc; }
 
