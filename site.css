@@ -415,7 +415,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* Hero: großzügiger & klarer auf großen Screens */
 @media (min-width: 901px){
-  .hero__inner { padding: 104px 0 108px; }
+  .hero__inner { padding: 104px clamp(22px, 4.5vw, 48px) 108px; }
   .hero h1 { font-size: clamp(2.4rem, 5.2vw, 3.8rem); }
   .hero__lead { font-size: 1.2rem; }
 }
