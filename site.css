@@ -448,3 +448,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* Telefon auf Kontaktseite zurückgestuft – Formular ist der bevorzugte Weg */
 .contact__method--muted { opacity: .68; background: transparent; }
+
+/* FAQ-Sektion Startseite */
+.faq h3 { margin: 28px 0 8px; font-size: 1.15rem; }
+.faq h3:first-child { margin-top: 0; }
+.faq p { margin: 0; max-width: 64ch; }
