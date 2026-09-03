@@ -242,7 +242,15 @@ h1, h2, h3, h4, h5, h6, dt, th { overflow-wrap: break-word; -webkit-hyphens: aut
 /* Grün-Seite (Politik) behält grünen Akzent auf Silber/Navy-Basis */
 
 /* Politik-Themen ohne Foto: Text-Karten mit farbigem Akzent */
-.theme--text .theme__body { border-top: 3px solid var(--primary); padding: 20px 22px 24px; }
+.theme-grid { counter-reset: theme-index; }
+.theme--text .theme__body {
+  position: relative; padding: 20px 22px 24px 22px; border-top: 1px solid var(--line);
+}
+.theme--text .theme__body::before {
+  counter-increment: theme-index; content: counter(theme-index, decimal-leading-zero);
+  display: block; font-size: .78rem; font-weight: 800; letter-spacing: .08em;
+  color: var(--primary); margin-bottom: 10px;
+}
 .theme--text .theme__body h3 { font-size: 1.14rem; }
 
 /* =======================================================================
