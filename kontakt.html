@@ -72,10 +72,29 @@
       </div>
     </div>
   </div></section>
+
+  <section class="section--soft"><div class="container">
+    <div class="section__head"><span class="section__eyebrow">Termin</span><h2>Termin anfragen</h2></div>
+    <p style="max-width:60ch;color:var(--ink-soft)">Sie möchten lieber direkt einen Termin vereinbaren? Nennen Sie bis zu drei Wunschtermine für einen Rückruf – ich bestätige telefonisch den passenden.</p>
+    <form class="form form--termin" aria-label="Terminanfrage">
+      <input type="hidden" name="org" value="ruben">
+      <input type="hidden" name="weg" value="telefonisch">
+      <div><label for="t-name">Name</label><input id="t-name" name="name" type="text" required></div>
+      <div><label for="t-telefon">Telefon</label><input id="t-telefon" name="telefon" type="tel" required></div>
+      <div><label for="t-wunsch1">1. Wunschtermin (Pflicht)</label><input id="t-wunsch1" name="wunsch_1" type="text" placeholder="z. B. Montag, 22.09., vormittags" required></div>
+      <div><label for="t-wunsch2">2. Wunschtermin (optional)</label><input id="t-wunsch2" name="wunsch_2" type="text" placeholder="z. B. Dienstag, 23.09., ab 14 Uhr"></div>
+      <div><label for="t-wunsch3">3. Wunschtermin (optional)</label><input id="t-wunsch3" name="wunsch_3" type="text" placeholder="z. B. Mittwoch, 24.09., ganztägig"></div>
+      <div><label for="t-anlass">Anlass (optional)</label><textarea id="t-anlass" name="anlass" placeholder="Kurz, worum es geht"></textarea></div>
+      <div class="hp" aria-hidden="true"><label>Bitte frei lassen<input name="website" tabindex="-1" autocomplete="off"></label></div>
+      <label class="form__consent"><input type="checkbox" name="consent" required> Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Angaben zur Terminvereinbarung zu.</label>
+      <button class="btn btn--primary" type="submit">Terminanfrage senden</button>
+    </form>
+  </div></section>
 </main>
 
 <footer class="footer"><div class="container">
   <div class="footer__bottom" style="border:0;padding-top:0"><span>© 2026 Ruben Wippermann · Duderstadt</span><span><a href="index.html">Start</a> · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="agb.html">AGB</a></span></div>
 </div></footer>
 <script src="assets/forms.js" defer></script>
+<script src="assets/termin-form.js" defer></script>
 </html>

@@ -1,11 +1,11 @@
-/* Formular-Anbindung an die Firmensoftware.
-   Endpunkt: POST https://software-wippermann.de/api/inhouse-anfrage
-   CORS-fähig, ohne Token. Legt ein Ticket (INH-XXXXXXXX) an.
-   Pflichtfelder der API: firma, email. Honeypot-Feld: website. */
+/* Terminanfrage-Formular auf ruben-wippermann.de.
+   Endpunkt: POST https://software-wippermann.de/api/terminanfrage
+   Pflichtfelder der API: org, name, telefon, wunsch_1. Honeypot-Feld: website.
+   Weg ist fest "telefonisch" – online/präsent werden laut Migration 0375
+   vom Büro noch nicht bedient. */
 (function () {
   "use strict";
-  var ENDPOINT = "https://software-wippermann.de/api/inhouse-anfrage";
-  var ORG = "ruben";
+  var ENDPOINT = "https://software-wippermann.de/api/terminanfrage";
 
   function val(fd, name) {
     var v = fd.get(name);
@@ -32,40 +32,27 @@
       if (typeof form.reportValidity === "function" && !form.reportValidity()) return;
       var fd = new FormData(form);
 
-      // Felder der verschiedenen Formulare auf die API abbilden
-      var firma = val(fd, "org") || val(fd, "firma") || val(fd, "name") || "Privatanfrage";
-      var ansprechpartner = val(fd, "name") || val(fd, "ansprechpartner");
-      var email = val(fd, "email");
-
-      var extra = [];
-      if (val(fd, "topic")) extra.push("Thema: " + val(fd, "topic"));
-      if (val(fd, "date")) extra.push("Datum/Zeitraum: " + val(fd, "date"));
-      if (val(fd, "place")) extra.push("Ort: " + val(fd, "place"));
-      var nachricht = val(fd, "message");
-      if (extra.length) nachricht = extra.join("\n") + (nachricht ? "\n\n" + nachricht : "");
-
-      if (!email || email.indexOf("@") < 1) {
-        setStatus(status, "Bitte eine gültige E-Mail-Adresse angeben.", "error");
-        return;
-      }
-      if (!nachricht) {
-        setStatus(status, "Bitte noch eine kurze Nachricht ergänzen.", "error");
-        return;
-      }
-
       var payload = {
-        org: ORG,
-        firma: firma,
-        ansprechpartner: ansprechpartner,
-        email: email,
-        nachricht: nachricht,
+        org: val(fd, "org") || "ruben",
+        weg: val(fd, "weg") || "telefonisch",
+        name: val(fd, "name"),
+        telefon: val(fd, "telefon"),
+        wunsch_1: val(fd, "wunsch_1"),
+        wunsch_2: val(fd, "wunsch_2"),
+        wunsch_3: val(fd, "wunsch_3"),
+        anlass: val(fd, "anlass"),
         website: val(fd, "website") // Honeypot – bei echten Nutzern leer
       };
+
+      if (!payload.name || !payload.telefon || !payload.wunsch_1) {
+        setStatus(status, "Bitte Name, Telefon und mindestens einen Wunschtermin angeben.", "error");
+        return;
+      }
 
       var btn = form.querySelector('button[type="submit"]');
       var label = btn ? btn.textContent : "";
       if (btn) { btn.disabled = true; btn.textContent = "Wird gesendet …"; }
-      setStatus(status, "Anfrage wird gesendet …", "info");
+      setStatus(status, "Terminanfrage wird gesendet …", "info");
 
       fetch(ENDPOINT, {
         method: "POST",
@@ -82,12 +69,12 @@
       }).then(function (data) {
         form.reset();
         var ticket = data.ticket_id ? " (Vorgang " + data.ticket_id + ")" : "";
-        setStatus(status, "Vielen Dank! Ihre Anfrage ist eingegangen" + ticket + ". Ich melde mich zeitnah.", "ok");
+        setStatus(status, "Vielen Dank! Ihre Terminanfrage ist eingegangen" + ticket + ". Ich rufe zeitnah zurück." , "ok");
       }).catch(function (err) {
         if (err && err.message === "rate") {
-          setStatus(status, "Zu viele Anfragen in kurzer Zeit. Bitte in einer Stunde erneut versuchen oder direkt an kontakt@ruben-wippermann.de schreiben.", "error");
+          setStatus(status, "Zu viele Anfragen in kurzer Zeit. Bitte in einer Stunde erneut versuchen oder direkt anrufen.", "error");
         } else {
-          setStatus(status, "Senden hat gerade nicht geklappt. Bitte direkt an kontakt@ruben-wippermann.de schreiben.", "error");
+          setStatus(status, "Senden hat gerade nicht geklappt. Bitte direkt an kontakt@ruben-wippermann.de schreiben oder anrufen.", "error");
         }
       }).then(function () {
         if (btn) { btn.disabled = false; btn.textContent = label; }
@@ -96,7 +83,7 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    var forms = document.querySelectorAll("form.form:not(.form--termin)");
+    var forms = document.querySelectorAll("form.form--termin");
     for (var i = 0; i < forms.length; i++) handle(forms[i]);
   });
 })();
