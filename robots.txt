@@ -1,4 +1,4 @@
-# ruben-wippermann.de — Kandidaten- und Unternehmerseite.
+# ruben-wippermann.de — Personen- und Unternehmerseite.
 # Suchmaschinen und KI-Assistenten ausdrücklich willkommen (GEO).
 
 User-agent: *
