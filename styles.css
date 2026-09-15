@@ -253,12 +253,14 @@ section { padding: 84px 0; }
 .contact__method { display: flex; gap: 14px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; }
 .contact__method svg { width: 22px; height: 22px; color: var(--primary); flex: 0 0 auto; }
 .contact__method small { display: block; color: var(--muted); font-size: .78rem; }
-.contact__method strong { font-weight: 650; }
+.contact__method strong { font-weight: 650; overflow-wrap: anywhere; }
 
 .form { display: grid; gap: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 26px; }
 .form label { font-size: .86rem; font-weight: 600; color: var(--ink-soft); display: block; margin-bottom: 6px; }
 .form input, .form textarea {
-  width: 100%; padding: 12px 14px; border-radius: 11px; border: 1px solid var(--line);
+  /* #6f8fc0 statt var(--line): Formularränder sind interaktive Bedienelement-
+     grenzen (WCAG 1.4.11, ≥3:1 nötig) – var(--line) läge hier bei ~1,3:1. */
+  width: 100%; padding: 12px 14px; border-radius: 11px; border: 1px solid #6f8fc0;
   background: var(--bg); color: var(--ink); font: inherit; font-size: .96rem;
 }
 .form input:focus, .form textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px var(--ring); }

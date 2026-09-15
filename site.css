@@ -454,8 +454,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* Bilder generell weicher eingebettet */
 .split__media, .offer__media, .theme__img { box-shadow: inset 0 0 0 1px rgba(20,45,80,.04); }
 
-/* Telefon auf Kontaktseite zurückgestuft – Formular ist der bevorzugte Weg */
-.contact__method--muted { opacity: .68; background: transparent; }
+/* Telefon auf Kontaktseite zurückgestuft – Formular ist der bevorzugte Weg.
+   Vorher opacity:.68, das Label/Link/Icon gemeinsam abdunkelte und den
+   Kontrast auf ~2,75:1 drückte (unter WCAG-AA 4,5:1). Label (small) und Link
+   (a) haben eigene color-Regeln, die schon für sich AA-konform sind
+   (--muted/--primary, ~5:1) – die opacity war der einzige Fehler. */
+.contact__method--muted { background: transparent; }
 
 /* FAQ-Sektion Startseite */
 .faq h3 { margin: 28px 0 8px; font-size: 1.15rem; }
