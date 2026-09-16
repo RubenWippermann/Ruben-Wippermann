@@ -172,27 +172,6 @@
 .cta { background: linear-gradient(150deg, #2563d9, #3b82f6) !important; }
 
 /* =======================================================================
-   Politik-Seite in Grün (Bündnis 90/Die Grünen), Rest bleibt Blau
-   ======================================================================= */
-.gruen {
-  --primary: #3f8f2e;
-  --primary-strong: #2f6f22;
-  --ring: rgba(63,143,46,.35);
-}
-.gruen .subhero {
-  background:
-    radial-gradient(760px 380px at 82% -20%, rgba(255,255,255,.22), transparent 60%),
-    linear-gradient(160deg, #2f7d29, #59b93f) !important;
-}
-.gruen .sunflower { animation-duration: 16s; }
-.gruen .section__eyebrow,
-.gruen .more { color: var(--primary); }
-.gruen .cta { background: linear-gradient(150deg, #2f6f22, #357528) !important; }
-.gruen .theme:hover { box-shadow: var(--shadow-lg); }
-.gruen .btn--primary { background: var(--primary); }
-.gruen .btn--primary:hover { background: var(--primary-strong); }
-
-/* =======================================================================
    Immer heller Auftritt – Dunkel-Modus des Systems NICHT übernehmen
    (Ruben wünscht durchgehend hell & freundlich)
    ======================================================================= */
@@ -206,14 +185,6 @@
 .card__icon { background: var(--blue-50); }
 .card__tag { background: var(--blue-50); }
 .note, .draft-banner { background: var(--blue-50); }
-/* Grün-Seite: auch im Dunkelmodus grüner Primärton */
-.gruen { color-scheme: light; }
-
-/* Grüne Kopfzeile: passende (grünliche) Textfarben statt Blau */
-.gruen .subhero__crumb { color: #d7f0cf; }
-.gruen .subhero__crumb a { color: #eaffe4; }
-.gruen .subhero p { color: #eaf7e4; }
-.gruen .subhero .politik-eyebrow { color: #eaffe4; }
 
 /* Neuer Hochformat-Hero (A1): Ausschnitt neutral/mittig-oben */
 .hero__portrait--photo img { object-position: 50% 18%; }
@@ -339,18 +310,6 @@ h1,h2,.hero h1,.subhero h1{ -webkit-hyphens:manual; hyphens:manual; overflow-wra
 .subhero h1{ color:var(--ink); }
 .subhero p{ color:var(--ink-soft); }
 .subhero .politik-eyebrow{ color:var(--primary); }
-
-/* Politik bleibt grün (Partei), aber ebenfalls hell & freundlich */
-.gruen .subhero{
-  background:
-    radial-gradient(720px 360px at 85% -20%, rgba(63,143,46,.12), transparent 60%),
-    linear-gradient(160deg,#edf7e9,#f6faf3) !important;
-  color:var(--ink);
-}
-.gruen .subhero__crumb{ color:var(--muted); } .gruen .subhero__crumb a{ color:#2f6f22; }
-.gruen .subhero h1{ color:var(--ink); }
-.gruen .subhero p{ color:var(--ink-soft); }
-.gruen .subhero .politik-eyebrow{ color:#2f6f22; }
 
 /* ---- Footer hell (macht das Navy-Wappen wieder sichtbar) ---- */
 .footer{ background:#eaf2fb !important; color:var(--ink-soft); border-top:1px solid var(--line); }
