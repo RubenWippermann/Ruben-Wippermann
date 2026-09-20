@@ -13,22 +13,6 @@
 }
 .hero__portrait--photo img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 12%; }
 
-/* -------------------------------------------------------------- Sonnenblume */
-.sunflower {
-  width: 1em; height: 1em; display: inline-block; vertical-align: -0.15em;
-  transform-origin: 50% 50%;
-  animation: sunflower-spin 18s linear infinite;
-}
-.sunflower svg { width: 100%; height: 100%; display: block; }
-.sunflower--lg { width: 84px; height: 84px; }
-.sunflower--hero { width: 30px; height: 30px; animation-duration: 24s; }
-
-@keyframes sunflower-spin { to { transform: rotate(360deg); } }
-/* Rücksicht auf Nutzer, die Animationen reduzieren möchten */
-@media (prefers-reduced-motion: reduce) {
-  .sunflower { animation: none; }
-}
-
 .politik-eyebrow { display: inline-flex; align-items: center; gap: 10px; }
 
 /* ---------------------------------------------------------------- Media/Split */
@@ -40,19 +24,6 @@
 }
 .split__media img { width: 100%; height: 100%; object-fit: cover; }
 .split__body h2 { margin-top: 0; }
-
-/* --------------------------------------------------------- Themen (Politik) */
-.theme-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.theme {
-  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-  overflow: hidden; box-shadow: var(--shadow); transition: transform .15s ease, box-shadow .2s;
-}
-.theme:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-.theme__img { aspect-ratio: 16 / 10; background: var(--surface-2); overflow: hidden; }
-.theme__img img { width: 100%; height: 100%; object-fit: cover; }
-.theme__body { padding: 18px 20px 22px; }
-.theme__body h3 { margin: 0 0 6px; font-size: 1.06rem; }
-.theme__body p { margin: 0; color: var(--muted); font-size: .94rem; }
 
 /* --------------------------------------------------------------- Unternehmen */
 .company-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
@@ -86,25 +57,13 @@
 /* ------------------------------------------------------------------- Divider */
 .divider { height: 1px; background: var(--line); border: 0; margin: 0; }
 
-/* --------------------------------------------------------- Entwurf-Markierung */
-.draft-banner {
-  background: repeating-linear-gradient(45deg, var(--blue-50), var(--blue-50) 12px, #fff 12px, #fff 24px);
-  border: 1px dashed var(--blue-300); border-radius: var(--radius);
-  padding: 14px 18px; color: var(--ink-soft); font-size: .9rem; margin-bottom: 22px;
-}
-@media (prefers-color-scheme: dark) {
-  .draft-banner { background: rgba(59,130,246,.08); }
-}
-
 /* ------------------------------------------------------------- Responsive */
 @media (max-width: 900px) {
   .split, .offer { grid-template-columns: 1fr; }
   .split--reverse .split__media, .offer--reverse .offer__media { order: 0; }
-  .theme-grid { grid-template-columns: repeat(2, 1fr); }
   .company-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
-  .theme-grid { grid-template-columns: 1fr; }
   .company { grid-template-columns: 1fr; }
   .company__img { aspect-ratio: 16/9; }
 }
@@ -129,11 +88,6 @@
 /* „Mehr erfahren"-Link */
 .more { display:inline-flex; align-items:center; gap:7px; font-weight:650; margin-top:14px; }
 .more::after { content:"→"; }
-
-/* Presse-Downloadliste */
-.press-list { list-style:none; padding:0; margin:0; display:grid; gap:12px; }
-.press-list li { display:flex; justify-content:space-between; align-items:center; gap:16px;
-  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:14px 18px; }
 
 /* Navigation früher einklappen (verhindert abgeschnittene Menüpunkte 640–900px) */
 @media (max-width: 900px) {
@@ -184,7 +138,7 @@
    sichtbare Wirkung verloren (WCAG-Kontrastprüfung, Auftrag Koordinator). */
 .card__icon { background: var(--blue-50); }
 .card__tag { background: var(--blue-50); }
-.note, .draft-banner { background: var(--blue-50); }
+.note { background: var(--blue-50); }
 
 /* Neuer Hochformat-Hero (A1): Ausschnitt neutral/mittig-oben */
 .hero__portrait--photo img { object-position: 50% 18%; }
@@ -206,23 +160,12 @@ h1, h2, h3, h4, h5, h6, dt, th { overflow-wrap: break-word; -webkit-hyphens: aut
    .cta) standen hier, waren aber tot — der spätere "HELL & FREUNDLICH"-Block
    (weiter unten) setzt dieselben Selektoren erneut mit !important und
    gewinnt daher immer. Entfernt (Design-Review-Auftrag, ui-ux-pro-max-Fund). */
-.card, .company, .theme, .offer, .press-list li{ border-color:var(--line); }
+.card, .company, .offer{ border-color:var(--line); }
 .section__eyebrow{ color:var(--primary); }
 /* Buttons */
 .btn--primary{ background:var(--primary); } .btn--primary:hover{ background:var(--primary-strong); }
 /* Grün-Seite (Politik) behält grünen Akzent auf Silber/Navy-Basis */
 
-/* Politik-Themen ohne Foto: Text-Karten mit farbigem Akzent */
-.theme-grid { counter-reset: theme-index; }
-.theme--text .theme__body {
-  position: relative; padding: 20px 22px 24px 22px; border-top: 1px solid var(--line);
-}
-.theme--text .theme__body::before {
-  counter-increment: theme-index; content: counter(theme-index, decimal-leading-zero);
-  display: block; font-size: .78rem; font-weight: 800; letter-spacing: .08em;
-  color: var(--primary); margin-bottom: 10px;
-}
-.theme--text .theme__body h3 { font-size: 1.14rem; }
 
 /* =======================================================================
    HELL & FREUNDLICH · Blass-Blau  (Vorbild: BWW-Seite, Blau statt Grün)
@@ -351,7 +294,7 @@ h1,h2,.hero h1,.subhero h1{ -webkit-hyphens:manual; hyphens:manual; overflow-wra
    ======================================================================= */
 
 /* Sanfte, konsistente Übergänge + Textauswahl */
-a, .btn, .card, .company, .theme, .clogo, .hero__role, .nav__links a { transition: color .18s ease, background .18s ease, border-color .18s ease, transform .18s ease, box-shadow .22s ease; }
+a, .btn, .card, .company, .clogo, .hero__role, .nav__links a { transition: color .18s ease, background .18s ease, border-color .18s ease, transform .18s ease, box-shadow .22s ease; }
 ::selection { background: rgba(31,111,192,.18); color: var(--ink); }
 html { scroll-padding-top: 88px; }
 
@@ -380,8 +323,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .hero__actions .btn:first-child:hover { transform: translateY(-1px); }
 
 /* Karten: ruhiger Lift + zarter Blau-Rand beim Hover */
-.card:hover, .company:hover, .theme:hover { transform: translateY(-4px); border-color: rgba(31,111,192,.35); box-shadow: 0 26px 50px -26px rgba(20,45,80,.30); }
-.theme--text .theme__body { transition: border-color .18s ease; }
+.card:hover, .company:hover { transform: translateY(-4px); border-color: rgba(31,111,192,.35); box-shadow: 0 26px 50px -26px rgba(20,45,80,.30); }
 
 /* „Mehr"-Link mit animiertem Pfeil */
 .more { position: relative; }
@@ -411,7 +353,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .company:hover .clogo { filter: none; opacity: 1; }
 
 /* Bilder generell weicher eingebettet */
-.split__media, .offer__media, .theme__img { box-shadow: inset 0 0 0 1px rgba(20,45,80,.04); }
+.split__media, .offer__media { box-shadow: inset 0 0 0 1px rgba(20,45,80,.04); }
 
 /* Telefon auf Kontaktseite zurückgestuft – Formular ist der bevorzugte Weg.
    Vorher opacity:.68, das Label/Link/Icon gemeinsam abdunkelte und den
