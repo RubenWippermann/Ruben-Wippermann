@@ -371,4 +371,5 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (max-width: 1024px) {
   .brand, .more, .hero__textlink, .footer li a, .subhero__crumb a, .back { min-height: 44px; display: inline-flex; align-items: center; }
   .footer li a { display: flex; }
+  .footer__bottom a { display: inline-block; padding: 13px 4px; }
 }
