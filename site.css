@@ -223,7 +223,7 @@ h1,h2,.hero h1,.subhero h1{ -webkit-hyphens:manual; hyphens:manual; overflow-wra
 .hero__actions{ align-items:center; gap:10px 22px; }
 .hero__actions .btn--primary{ background:var(--primary); color:#fff; border-color:transparent; box-shadow:var(--shadow); }
 .hero__actions .btn--primary:hover{ background:var(--primary-strong); }
-.hero__textlink{ font-weight:700; color:var(--primary); display:inline-flex; align-items:center; gap:6px; }
+.hero__textlink{ font-weight:700; color:var(--primary-strong); display:inline-flex; align-items:center; gap:6px; }
 .hero__textlink:hover{ text-decoration:underline; }
 
 /* Mitlaufende CTA-Leiste (nur mobil) – ein Tipp bis zur Anfrage */
