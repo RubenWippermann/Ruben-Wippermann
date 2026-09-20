@@ -197,7 +197,7 @@ section { padding: 84px 0; }
 }
 @media (prefers-color-scheme: dark) { .card__icon { background: rgba(59,130,246,.14); } }
 .card__icon svg { width: 24px; height: 24px; }
-.card h3 { margin: 0 0 8px; font-size: 1.16rem; }
+.card h3, .card h2 { margin: 0 0 8px; font-size: 1.16rem; }
 .card p { margin: 0; color: var(--muted); font-size: .98rem; }
 .card__tag { display: inline-block; margin-top: 14px; font-size: .78rem; font-weight: 650; color: var(--primary); background: var(--blue-50); padding: 4px 10px; border-radius: 999px; }
 @media (prefers-color-scheme: dark) { .card__tag { background: rgba(59,130,246,.14); } }
@@ -271,7 +271,7 @@ section { padding: 84px 0; }
 .footer { background: var(--blue-900); color: #b9cdf0; padding: 56px 0 30px; }
 .footer a { color: #cfe0fb; }
 .footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; margin-bottom: 34px; }
-.footer h4 { color: #fff; font-size: .95rem; margin: 0 0 14px; }
+.footer h4, .footer h3 { color: #fff; font-size: .95rem; margin: 0 0 14px; }
 .footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 9px; font-size: .92rem; }
 .footer__brand { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
 .footer__brand .brand__name { color: #fff; }

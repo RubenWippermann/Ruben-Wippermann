@@ -65,7 +65,7 @@
 .company__img { background: var(--surface-2); overflow: hidden; }
 .company__img img { width: 100%; height: 100%; object-fit: cover; }
 .company__body { padding: 20px 22px; }
-.company__body h3 { margin: 0 0 4px; font-size: 1.12rem; }
+.company__body h3, .company__body h2 { margin: 0 0 4px; font-size: 1.12rem; }
 .company__kicker { font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--primary); }
 .company__body p { margin: 8px 0 0; color: var(--muted); font-size: .93rem; }
 
@@ -314,7 +314,7 @@ h1,h2,.hero h1,.subhero h1{ -webkit-hyphens:manual; hyphens:manual; overflow-wra
 /* ---- Footer hell (macht das Navy-Wappen wieder sichtbar) ---- */
 .footer{ background:#eaf2fb !important; color:var(--ink-soft); border-top:1px solid var(--line); }
 .footer a{ color:var(--primary); }
-.footer h4{ color:var(--ink); }
+.footer h4, .footer h3{ color:var(--ink); }
 .footer__brand .brand__name{ color:var(--ink); }
 .footer__bottom{ border-top-color:var(--line); color:var(--muted); }
 
