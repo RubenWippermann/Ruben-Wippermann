@@ -45,8 +45,13 @@
 }
 
 html { scroll-padding-top: 76px; }
+:root {
+  --font-ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
 
 body {
+  font-family: var(--font-ui);
+  -webkit-tap-highlight-color: transparent;
   font-size: 1.0625rem;
   line-height: 1.5;
   color: var(--ink);
@@ -96,12 +101,12 @@ h3, h4 { font-weight: 600 !important; letter-spacing: -0.02em !important; }
 .section__head p { color: var(--muted); font-size: 1.2rem; max-width: 40em; }
 p { max-width: 68ch; }
 
-.section__eyebrow, .politik-eyebrow, .steckbrief__eyebrow, .company__kicker {
+.section__eyebrow, .politik-eyebrow, .steckbrief__eyebrow, .company__kicker, .timeline__year, .steckbrief__list dt {
   color: var(--muted) !important;
-  font-size: 0.8rem !important;
+  font-size: 0.9rem !important;
   font-weight: 600 !important;
-  letter-spacing: 0.06em !important;
-  text-transform: uppercase;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
 }
 .hero__eyebrow {
   background: var(--bg-soft) !important;
@@ -273,6 +278,25 @@ a { color: var(--primary); }
 
 @media (prefers-color-scheme: dark) {
   .brand__logo, .footer__brand .brand__logo { background: #ffffff; border-radius: 10px; padding: 2px; }
+}
+
+/* ---------- Bedienbarkeit (Ziele, Fokus, Rückfälle) ---------- */
+.nav__links a { min-height: 44px; display: inline-flex; align-items: center; }
+.btn { display: inline-flex; align-items: center; justify-content: center; }
+.btn:active { transform: scale(0.98); }
+.hero__textlink { min-height: 44px; display: inline-flex; align-items: center; }
+input:not([type=checkbox]):not([type=radio]):not([type=hidden]), select, textarea { font-size: 1rem; font-family: var(--font-ui); }
+input:not([type=checkbox]):not([type=radio]):not([type=hidden]), select { min-height: 44px; }
+strong > a[href^="mailto:"], strong > a[href^="tel:"], strong > a[href^="http"] { display: inline-flex; align-items: center; min-height: 44px; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, .btn:focus-visible {
+  outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 8px;
+}
+@media (prefers-reduced-transparency: reduce) {
+  .nav { background: var(--bg) !important; -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+@media (prefers-contrast: more) {
+  :root { --line: rgba(0, 0, 0, 0.55); --muted: #4a4a4f; }
+  .card, .company, .offer, .contact__method { outline: 1px solid var(--ink-soft); }
 }
 
 /* ---------- Bewegung ---------- */
