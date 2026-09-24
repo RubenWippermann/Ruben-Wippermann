@@ -1,0 +1,288 @@
+/* =========================================================================
+   Apple-Design-Schicht (AD-1, 25.09.2026)
+   Wird NACH styles.css und site.css geladen und überschreibt deren Schichten.
+   Grundsätze: ruhige Typografie, viel Weißraum, klare Hierarchie, weiche Radien,
+   Neutralflächen; das Markenblau erscheint nur als Akzent (Links, Knöpfe, Fokus).
+   Hell und dunkel; Kontrast >= 4,5:1; Ziele >= 44 px; reduzierte Bewegung respektiert.
+   ========================================================================= */
+
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f5f5f7;
+  --surface: #ffffff;
+  --surface-2: #f5f5f7;
+  --ink: #1d1d1f;
+  --ink-soft: #424245;
+  --muted: #6e6e73;
+  --line: rgba(0, 0, 0, 0.1);
+  --primary: #1e5bd6;
+  --primary-strong: #174bb0;
+  --primary-ink: #ffffff;
+  --radius: 20px;
+  --radius-lg: 28px;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 10px 30px -18px rgba(0, 0, 0, 0.16);
+  --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.04), 0 24px 60px -30px rgba(0, 0, 0, 0.22);
+  --maxw: 1080px;
+  --sec-pad: clamp(72px, 9vw, 128px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --bg-soft: #1c1c1e;
+    --surface: #1c1c1e;
+    --surface-2: #2c2c2e;
+    --ink: #f5f5f7;
+    --ink-soft: #d2d2d7;
+    --muted: #a1a1a6;
+    --line: rgba(255, 255, 255, 0.16);
+    --primary: #4d8ef5;
+    --primary-strong: #7aabf8;
+    --primary-ink: #04122b;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 10px 30px -18px rgba(0, 0, 0, 0.8);
+    --shadow-lg: 0 24px 60px -30px rgba(0, 0, 0, 0.9);
+  }
+}
+
+html { scroll-padding-top: 76px; }
+
+body {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--bg);
+  letter-spacing: -0.011em;
+}
+
+/* ---------- Typografie ---------- */
+h1, h2, h3, h4, h5, h6, dt, th,
+.hero h1, .subhero h1 {
+  font-weight: 700 !important;
+  letter-spacing: -0.03em !important;
+  color: var(--ink);
+}
+h3, h4 { font-weight: 600 !important; letter-spacing: -0.02em !important; }
+
+.hero h1 {
+  font-size: clamp(2.6rem, 6.4vw, 4.5rem) !important;
+  line-height: 1.04 !important;
+  margin: 0 0 22px !important;
+}
+.hero h1 .accent { color: var(--primary) !important; }
+.hero__lead {
+  font-size: clamp(1.15rem, 2.2vw, 1.4rem) !important;
+  line-height: 1.4 !important;
+  font-weight: 400 !important;
+  color: var(--muted) !important;
+  max-width: 32em;
+}
+.subhero {
+  background: var(--bg) !important;
+  color: var(--ink) !important;
+  padding: clamp(36px, 6vw, 80px) 0 clamp(20px, 3vw, 40px) !important;
+}
+.subhero .politik-eyebrow { color: var(--muted) !important; }
+.subhero h1 { font-size: clamp(2.3rem, 5vw, 3.5rem) !important; line-height: 1.06 !important; }
+.subhero p { color: var(--muted) !important; font-size: 1.2rem; max-width: 36em; }
+.subhero__crumb, .subhero__crumb a { color: var(--muted) !important; }
+
+.section__head h2, .split__body h2, .cta h2 {
+  font-size: clamp(2rem, 4.4vw, 3rem) !important;
+  line-height: 1.08 !important;
+  margin: 8px 0 16px !important;
+}
+.section__head p, .split__body p, .card p, .company__body p, .offer__body p,
+.about p, .timeline__text, .faq p { color: var(--ink-soft); }
+.section__head p { color: var(--muted); font-size: 1.2rem; max-width: 40em; }
+p { max-width: 68ch; }
+
+.section__eyebrow, .politik-eyebrow, .steckbrief__eyebrow, .company__kicker {
+  color: var(--muted) !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase;
+}
+.hero__eyebrow {
+  background: var(--bg-soft) !important;
+  color: var(--ink-soft) !important;
+  border: 0 !important;
+  font-weight: 500 !important;
+}
+
+/* ---------- Abschnitte / Weißraum ---------- */
+section { padding: var(--sec-pad) 0 !important; }
+.section--soft { background: var(--bg-soft) !important; }
+.container { max-width: var(--maxw); }
+.section__head { margin-bottom: clamp(36px, 5vw, 64px); }
+
+/* ---------- Navigation ---------- */
+.nav {
+  background: color-mix(in srgb, var(--bg) 72%, transparent) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(22px);
+  backdrop-filter: saturate(180%) blur(22px);
+  border-bottom: 1px solid var(--line) !important;
+  box-shadow: none !important;
+}
+.nav__links a { color: var(--ink-soft) !important; font-size: 0.95rem; font-weight: 500; }
+.nav__links a:hover { color: var(--ink) !important; background: transparent !important; }
+.nav__links a.nav__cta, .nav__cta {
+  background: var(--primary) !important;
+  color: var(--primary-ink) !important;
+  border-radius: 999px !important;
+  padding: 8px 18px !important;
+  font-weight: 600 !important;
+}
+.brand__name { color: var(--ink) !important; }
+.brand__name small { color: var(--muted) !important; }
+
+/* ---------- Hero ---------- */
+.hero {
+  background: var(--bg) !important;
+  color: var(--ink) !important;
+  padding: clamp(28px, 4vw, 56px) 0 clamp(56px, 7vw, 96px) !important;
+}
+.hero::after { display: none !important; }
+.hero__role, .trust__item {
+  background: var(--bg-soft) !important;
+  border: 0 !important;
+  color: var(--ink-soft) !important;
+  box-shadow: none !important;
+  border-radius: 999px !important;
+}
+.hero__card {
+  background: var(--bg-soft) !important;
+  border: 0 !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: none !important;
+  padding: 14px !important;
+}
+.hero__card p { color: var(--muted) !important; }
+.hero__portrait, .hero__portrait--photo, .hero__portrait--photo img, .hero__portrait img {
+  border-radius: 22px !important;
+}
+.hero__card:hover { transform: none !important; box-shadow: none !important; }
+.trust { background: var(--bg) !important; }
+
+/* ---------- Knöpfe ---------- */
+.btn {
+  border-radius: 999px !important;
+  padding: 12px 26px !important;
+  min-height: 44px;
+  font-weight: 600 !important;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  box-shadow: none !important;
+}
+.btn--primary, .hero__actions .btn--primary {
+  background: var(--primary) !important;
+  color: var(--primary-ink) !important;
+  border-color: transparent !important;
+}
+.btn--primary:hover, .hero__actions .btn--primary:hover { background: var(--primary-strong) !important; transform: none; }
+.btn--ghost {
+  background: transparent !important;
+  color: var(--primary) !important;
+  border-color: transparent !important;
+}
+.btn--ghost:hover { background: var(--bg-soft) !important; }
+.cta h2 { color: var(--ink) !important; }
+.cta .btn--light {
+  background: var(--bg) !important;
+  color: var(--primary) !important;
+}
+.cta .btn--light:hover { background: var(--surface-2) !important; }
+.cta__actions .btn:first-child { background: var(--primary) !important; color: var(--primary-ink) !important; }
+.cta__actions .btn:first-child:hover { background: var(--primary-strong) !important; }
+.hero__textlink, .more, a.more { color: var(--primary) !important; font-weight: 600; }
+a { color: var(--primary); }
+.nav__links a, .footer a, .btn { text-decoration: none; }
+
+/* ---------- Karten und Bild-Panels ---------- */
+.card, .company, .offer, .steckbrief, .note {
+  background: var(--bg-soft) !important;
+  border: 0 !important;
+  border-radius: var(--radius) !important;
+  box-shadow: none !important;
+}
+.section--soft .card, .section--soft .company, .section--soft .offer { background: var(--surface) !important; }
+.card, .company { padding: clamp(24px, 3vw, 36px) !important; }
+.card:hover, .company:hover { transform: translateY(-2px); box-shadow: var(--shadow) !important; }
+.card__icon { background: var(--bg) !important; color: var(--primary) !important; border-radius: 14px !important; }
+.card__tag { background: var(--bg) !important; color: var(--muted) !important; border: 0 !important; }
+.split__media img, .offer__media img, .about__photo, .company__img, .company__img img {
+  border-radius: var(--radius-lg) !important;
+  box-shadow: none !important;
+}
+.clogo { background: transparent !important; border: 0 !important; border-radius: 0 !important; }
+@media (prefers-color-scheme: dark) {
+  .clogo { background: #ffffff !important; padding: 6px 10px; border-radius: 10px !important; height: 46px; }
+}
+
+/* ---------- Kennzahlen ---------- */
+.stats { background: var(--bg-soft) !important; padding: clamp(48px, 6vw, 80px) 0 !important; }
+.stat__num { color: var(--ink) !important; font-weight: 700; letter-spacing: -0.04em; }
+.stat__label { color: var(--muted) !important; }
+
+/* ---------- Zeitleiste ---------- */
+.timeline::before { background: var(--line) !important; }
+.timeline__dot { background: var(--bg) !important; border-color: var(--primary) !important; }
+.timeline__year { color: var(--muted) !important; }
+.timeline__title { color: var(--ink) !important; }
+
+/* ---------- Kontaktaufruf ---------- */
+.cta, .cta-bar {
+  background: var(--bg-soft) !important;
+  color: var(--ink) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: none !important;
+  padding: clamp(40px, 7vw, 88px) clamp(24px, 5vw, 64px) !important;
+}
+.cta p { color: var(--muted) !important; margin-inline: auto; }
+
+/* ---------- Formulare ---------- */
+.form input, .form textarea {
+  background: var(--bg-soft) !important;
+  border: 1px solid transparent !important;
+  border-radius: 14px !important;
+  color: var(--ink) !important;
+  font-size: 1rem;
+  min-height: 48px;
+}
+.form input:focus, .form textarea:focus { background: var(--bg) !important; border-color: var(--primary) !important; }
+.contact__method { background: var(--bg-soft) !important; border: 0 !important; border-radius: var(--radius) !important; box-shadow: none !important; }
+
+/* ---------- Footer ---------- */
+.footer {
+  background: var(--bg-soft) !important;
+  color: var(--muted) !important;
+  border-top: 0 !important;
+  padding: 56px 0 32px !important;
+  font-size: 0.9rem;
+}
+.footer a { color: var(--ink-soft) !important; }
+.footer a:hover { color: var(--ink) !important; }
+.footer h3, .footer h4 { color: var(--ink) !important; font-size: 0.85rem; }
+.footer__brand .brand__name { color: var(--ink) !important; }
+.footer__bottom { border-top: 1px solid var(--line) !important; color: var(--muted) !important; }
+
+/* ---------- Rechtstexte ---------- */
+.legal h1 { font-size: clamp(2rem, 4.5vw, 3rem); }
+.legal h2 { font-size: 1.4rem; margin-top: 2.2em; }
+.legal p, .legal li { color: var(--ink-soft); }
+
+@media (prefers-color-scheme: dark) {
+  .brand__logo, .footer__brand .brand__logo { background: #ffffff; border-radius: 10px; padding: 2px; }
+}
+
+/* ---------- Bewegung ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* ---------- Mobil ---------- */
+@media (max-width: 640px) {
+  .hero h1 { font-size: clamp(2.3rem, 11vw, 3rem) !important; }
+  .cta, .cta-bar { padding: 40px 22px !important; border-radius: 24px !important; }
+  .card, .company { padding: 24px !important; }
+}
