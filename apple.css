@@ -320,3 +320,99 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
   .cta, .cta-bar { padding: 40px 22px !important; border-radius: 24px !important; }
   .card, .company { padding: 24px !important; }
 }
+
+
+/* =========================================================================
+   Stufe 2 (RW-2, 25.09.2026): Bewegung, Foto-Hero, asymmetrische Abschnitte
+   Akzentmotiv: dünne Blaulinie + große Ziffern. Keine Verläufe, keine externen Dateien.
+   ========================================================================= */
+
+/* ---------- Hero mit Foto/Videoloop ---------- */
+.hero--media {
+  position: relative;
+  min-height: clamp(520px, 78vh, 760px);
+  display: flex;
+  align-items: flex-end;
+  padding: 0 !important;
+  overflow: hidden;
+  background: #0b0b0d !important;
+  color: #fff !important;
+}
+.hero__media { position: absolute; inset: 0; }
+.hero__poster, .hero__video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 30%;
+  border-radius: 0 !important;
+}
+.hero__video { opacity: 0; transition: opacity 400ms ease; }
+.hero__video.is-playing { opacity: 1; }
+.hero--media::before {            /* ruhige, flächige Abdunklung für Lesbarkeit (kein Verlaufs-Blob) */
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: rgba(0, 0, 0, 0.5);
+}
+.hero__content {
+  position: relative; z-index: 2; width: 100%;
+  padding-top: 120px !important; padding-bottom: clamp(40px, 6vw, 84px) !important;
+}
+.hero--media h1 { color: #fff !important; font-size: clamp(3rem, 9vw, 6.5rem) !important; line-height: 1 !important; margin: 0 0 18px !important; }
+.hero--media .hero__lead { color: rgba(255, 255, 255, 0.92) !important; max-width: 30em; margin: 0 0 30px; }
+.hero--media .hero__eyebrow {
+  background: rgba(255, 255, 255, 0.16) !important; color: #fff !important;
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  padding: 6px 14px; border-radius: 999px; display: inline-block; margin-bottom: 18px;
+}
+.hero__cta, .hero--media .btn--primary { background: #fff !important; color: #0b1a3a !important; padding: 14px 34px !important; font-size: 1.05rem; }
+.hero__cta:hover, .hero--media .btn--primary:hover { background: #e8eefc !important; }
+@media (prefers-reduced-motion: reduce) { .hero__video { display: none; } }
+@media (max-width: 640px) {
+  .hero--media { min-height: 560px; }
+  .hero__poster, .hero__video { object-position: 62% 30%; }
+  .hero--media h1 { font-size: clamp(2rem, 10vw, 3rem) !important; overflow-wrap: normal; }
+}
+
+/* ---------- Aussagezitat ---------- */
+.pullquote { margin: 0 0 28px; padding: 0 0 0 20px; border-left: 3px solid var(--primary); }
+.pullquote p { font-size: clamp(1.4rem, 2.6vw, 2rem); line-height: 1.25; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); max-width: 22em; }
+
+/* ---------- Asymmetrische Unternehmensfläche ---------- */
+.company-grid { grid-template-columns: 1.35fr 1fr !important; grid-auto-flow: dense; gap: 20px !important; }
+.company--lead { grid-row: span 3; display: flex; align-items: center; padding: clamp(32px, 4.5vw, 64px) !important; }
+.company--lead h3 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+.company--lead .clogo { height: 64px; width: auto; }
+@media (max-width: 800px) {
+  .company-grid { grid-template-columns: 1fr !important; }
+  .company--lead { grid-row: auto; }
+}
+
+/* ---------- Angebote: eine große, zwei kleine Flächen mit Ziffern ---------- */
+.offers { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; }
+.offer-card--lead { grid-row: span 2; padding: clamp(32px, 4.5vw, 64px) !important; display: flex; flex-direction: column; justify-content: flex-end; min-height: 320px; }
+.offer-card--lead h3 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+.offer-card__no { font-size: 0.95rem; font-weight: 600; color: var(--primary); letter-spacing: 0.04em; margin-bottom: auto; padding-bottom: 20px; display: block; }
+.offer-card .more { margin-top: 12px; display: inline-block; }
+@media (max-width: 800px) { .offers { grid-template-columns: 1fr; } .offer-card--lead { grid-row: auto; min-height: 0; } }
+
+/* ---------- Kennzahlen: große Typo-Skala ---------- */
+.stat__num { font-size: clamp(1.9rem, 3.6vw, 3rem) !important; line-height: 1.05; white-space: nowrap; }
+
+/* ---------- Zeitleiste ---------- */
+.timeline__dot { transition: transform 300ms ease, background-color 300ms ease; }
+.timeline__item.is-in .timeline__dot { transform: scale(1.25); background: var(--primary) !important; }
+
+/* ---------- Karten mit Bedeutung: Hover-Lift ---------- */
+.card, .company { transition: transform 250ms ease, box-shadow 250ms ease; }
+@media (hover: hover) {
+  .card:hover, .company:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg) !important; }
+}
+
+/* ---------- Einblenden beim Scrollen (nur mit JS und ohne reduzierte Bewegung) ---------- */
+.has-reveal .reveal { opacity: 0; transform: translateY(18px); transition: opacity 280ms ease, transform 280ms ease; transition-delay: var(--reveal-delay, 0ms); }
+.has-reveal .reveal.is-in { opacity: 1; transform: none; }
+.has-reveal .card.reveal.is-in, .has-reveal .company.reveal.is-in { transition-delay: 0ms; }
+
+/* ---------- Kontaktaufruf: große Typo ---------- */
+.cta h2 { font-size: clamp(2.2rem, 5.5vw, 4rem) !important; }
+
+/* Vertrauensleiste kompakt, Foto im Über-mich-Abschnitt im Hochformat */
+.trust { padding: 28px 0 !important; }
+.split__media img { width: 100%; height: auto; max-height: 640px; object-fit: cover; object-position: 50% 15%; }
