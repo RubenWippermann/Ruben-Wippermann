@@ -299,6 +299,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .card, .company, .offer, .contact__method { outline: 1px solid var(--ink-soft); }
 }
 
+
+/* ---------- Kontrast-Korrekturen (Lighthouse, Dunkelmodus) ---------- */
+.cta-bar__btn, .skip-link { color: var(--primary-ink) !important; }
+.cta-bar__btn { background: var(--primary) !important; box-shadow: none !important; min-height: 44px; display: inline-flex; align-items: center; }
+.cta-bar__btn:hover { background: var(--primary-strong) !important; }
+/* Links im Fließtext unterstreichen (WCAG 1.4.1: nicht nur über die Farbe erkennbar) */
+section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .faq a, .note a {
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;
+}
+
 /* ---------- Bewegung ---------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
