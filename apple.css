@@ -416,3 +416,10 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
 /* Vertrauensleiste kompakt, Foto im Über-mich-Abschnitt im Hochformat */
 .trust { padding: 28px 0 !important; }
 .split__media img { width: 100%; height: auto; max-height: 640px; object-fit: cover; object-position: 50% 15%; }
+
+/* ---------- Unterseiten: Fundstellen aus Lighthouse (25.09.) ---------- */
+/* Datenschutz-Link in der Einwilligungszeile: nicht nur über Farbe erkennbar (WCAG 1.4.1) */
+.form__consent a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+/* Shop-Einbau (Skript vom Shop-Worker): Platz vorhalten gegen Layoutsprung, Auswahlfelder lesbar in hell und dunkel */
+#pepa-shop { min-height: 720px; }
+#pepa-shop select.pepa-auswahl, #pepa-shop input { background: var(--surface) !important; color: var(--ink) !important; border: 1px solid var(--line) !important; border-radius: 12px !important; min-height: 44px; }
