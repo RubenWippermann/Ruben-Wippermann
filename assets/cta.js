@@ -11,6 +11,8 @@
     if (document.querySelector(".cta-bar")) return;
     var bar = document.createElement("div");
     bar.className = "cta-bar";
+    bar.setAttribute("role", "complementary");
+    bar.setAttribute("aria-label", "Schnellanfrage");
     bar.innerHTML =
       '<span class="cta-bar__txt">Kurs, Sanitätsdienst oder Beratung?</span>' +
       '<a class="cta-bar__btn" href="angebote.html">Angebot anfragen</a>';
