@@ -378,7 +378,6 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
 .company-grid { grid-template-columns: 1.35fr 1fr !important; grid-auto-flow: dense; gap: 20px !important; }
 .company--lead { grid-row: span 3; display: flex; align-items: center; padding: clamp(32px, 4.5vw, 64px) !important; }
 .company--lead h3 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
-.company--lead .clogo { height: 64px; width: auto; }
 @media (max-width: 800px) {
   .company-grid { grid-template-columns: 1fr !important; }
   .company--lead { grid-row: auto; }
