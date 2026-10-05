@@ -199,6 +199,8 @@ section { padding: var(--sec-pad) 0 !important; }
 .cta .btn--light:hover { background: var(--surface-2) !important; }
 .cta__actions .btn:first-child { background: var(--primary) !important; color: var(--primary-ink) !important; }
 .cta__actions .btn:first-child:hover { background: var(--primary-strong) !important; }
+/* Knopfgruppe im Abschluss-Block: gleich breit (ab Tablet), darunter gestapelt wie bisher */
+@media (min-width: 700px) { .cta__actions { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; justify-content: center; } }
 .hero__textlink, .more, a.more { color: var(--primary) !important; font-weight: 600; }
 a { color: var(--primary); }
 .nav__links a, .footer a, .btn { text-decoration: none; }
@@ -387,6 +389,8 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
   .company-grid { grid-template-columns: 1fr !important; }
   .company--lead { grid-row: auto; }
 }
+/* Ohne Lead-Karte (Unternehmen): gleichrangige Karten gleich breit */
+@media (min-width: 801px) { .company-grid:not(:has(.company--lead)) { grid-template-columns: 1fr 1fr !important; } }
 
 /* ---------- Angebote: eine große, zwei kleine Flächen mit Ziffern ---------- */
 .offers { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; }
