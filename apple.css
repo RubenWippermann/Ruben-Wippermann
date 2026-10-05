@@ -408,15 +408,16 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
 .timeline__item.is-in .timeline__dot { transform: scale(1.25); background: var(--primary) !important; }
 
 /* ---------- Karten mit Bedeutung: Hover-Lift ---------- */
-.card, .company { transition: transform 250ms ease, box-shadow 250ms ease; }
+.card, .company { transition: transform 200ms ease-out; }
 @media (hover: hover) {
-  .card:hover, .company:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg) !important; }
+  .card:hover, .company:hover { transform: translateY(-3px); }
 }
 
 /* ---------- Einblenden beim Scrollen (nur mit JS und ohne reduzierte Bewegung) ---------- */
-.has-reveal .reveal { opacity: 0; transform: translateY(18px); transition: opacity 280ms ease, transform 280ms ease; transition-delay: var(--reveal-delay, 0ms); }
+.has-reveal .reveal { opacity: 0; transform: translateY(18px); transition: opacity 320ms ease-out, transform 320ms ease-out; transition-delay: var(--reveal-delay, 0ms); }
 .has-reveal .reveal.is-in { opacity: 1; transform: none; }
-.has-reveal .card.reveal.is-in, .has-reveal .company.reveal.is-in { transition-delay: 0ms; }
+/* Nach dem Einblenden (Klasse is-done per Skript) gilt wieder die Hover-Transition, ohne Staffel-Verzoegerung. */
+.has-reveal .reveal.is-done { transition: transform 200ms ease-out; }
 
 /* ---------- Kontaktaufruf: große Typo ---------- */
 .cta h2 { font-size: clamp(2.2rem, 5.5vw, 4rem) !important; }

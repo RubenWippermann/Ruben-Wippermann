@@ -19,7 +19,7 @@
 
   if (reduce || !("IntersectionObserver" in window)) return;
 
-  var sel = ".section__head, .split, .timeline__item, .company, .stat, .offer-card, .faq, .cta, .trust__row";
+  var sel = ".section__head, .split, .timeline__item, .company, .stat, .offer-card, .card, .faq, .cta, .trust__row";
   var items = document.querySelectorAll(sel);
   if (!items.length) return;
   document.documentElement.classList.add("has-reveal");
@@ -58,15 +58,20 @@
     entries.forEach(function (e) {
       if (e.isIntersecting) {
         e.target.classList.add("is-in");
+        (function (t) { setTimeout(function () { t.classList.add("is-done"); }, 700); })(e.target);
         zaehleHoch(e.target);
         io.unobserve(e.target);
       }
     });
   }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
 
-  items.forEach(function (el, i) {
+  /* Staffelung je Kartenreihe: 60 ms je Geschwister, hoechstens 6 Stufen (0-300 ms). */
+  var stufe = new Map();
+  items.forEach(function (el) {
+    var n = stufe.get(el.parentNode) || 0;
+    stufe.set(el.parentNode, n + 1);
     el.classList.add("reveal");
-    el.style.setProperty("--reveal-delay", (i % 4) * 60 + "ms");
+    el.style.setProperty("--reveal-delay", Math.min(n, 5) * 60 + "ms");
     io.observe(el);
   });
   /* Sicherheitsnetz: liefert der Browser keine Beobachtungen, sofort alles zeigen. */

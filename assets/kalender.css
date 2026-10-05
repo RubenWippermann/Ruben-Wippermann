@@ -121,9 +121,11 @@
 @keyframes kal-auf { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
 .kal-rein-r { animation: kal-rein-r .26s ease-out; }
 .kal-rein-l { animation: kal-rein-l .26s ease-out; }
+@keyframes kal-rein-f { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.kal-rein-f { animation: kal-rein-f .22s ease-out; }
 .kal-auf { animation: kal-auf .22s ease-out; }
 @media (prefers-reduced-motion: reduce) {
-  .kal-rein-r, .kal-rein-l, .kal-auf { animation: none; }
+  .kal-rein-r, .kal-rein-l, .kal-rein-f, .kal-auf { animation: none; }
   .kal-btn, .kal-tag, .kal-cta { transition: none; }
 }
 
