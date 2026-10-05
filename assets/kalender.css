@@ -30,7 +30,8 @@
 .kal button:focus-visible, .kal a:focus-visible, .kal h3[tabindex]:focus-visible {
   outline: 3px solid var(--kal-akzent); outline-offset: 2px;
 }
-.kal-filter { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 4px 0 10px; }
+.kal-filter { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 4px 0 10px; }
+@media (min-width: 768px) { .kal-filter { gap: 16px; } }
 .kal-fbtn { min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--kal-line); background: var(--kal-card); color: var(--kal-ink); font: inherit; font-size: .92rem; font-weight: 600; cursor: pointer; }
 .kal-fbtn:hover { border-color: var(--kal-akzent); }
 .kal-fbtn[aria-pressed="true"] { border-color: var(--kal-akzent-dunkel); color: var(--kal-akzent-dunkel); box-shadow: inset 0 0 0 1px var(--kal-akzent-dunkel); }

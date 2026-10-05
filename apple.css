@@ -444,3 +444,7 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: none; }
 }
+
+/* A3-Abstand: mind. 12 px (mobil) bzw. 16 px (ab 768 px) zwischen Knoepfen der Kontaktaufforderung. */
+.cta__actions { gap: 12px; }
+@media (min-width: 768px) { .cta__actions { gap: 16px; } }
