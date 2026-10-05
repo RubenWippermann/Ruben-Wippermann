@@ -58,7 +58,7 @@
     entries.forEach(function (e) {
       if (e.isIntersecting) {
         e.target.classList.add("is-in");
-        (function (t) { setTimeout(function () { t.classList.add("is-done"); }, 700); })(e.target);
+        (function (t) { setTimeout(function () { t.classList.remove("reveal"); t.style.removeProperty("--reveal-delay"); }, 700); })(e.target);
         zaehleHoch(e.target);
         io.unobserve(e.target);
       }
