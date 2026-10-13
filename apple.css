@@ -465,3 +465,15 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
 }
 @media (max-width: 699px) { .kal-filter { scrollbar-width: none; } .kal-filter::-webkit-scrollbar { display: none; } }
 @media (max-width: 699px) { .kal { min-height: 800px; } }
+
+/* ---------- Nachtlauf-RW2: Überlauf Kennzahlen, Kontrast Kalender ---------- */
+.stats { overflow-x: clip; }
+.stats__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 900px) { .stats__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.stat { min-width: 0; }
+.kal .kal-tag.is-vorbei { opacity: 1; }
+.kal .kal-tag.is-vorbei .kal-nr { color: var(--kal-muted); }
+@media (prefers-color-scheme: dark) { .kal.kal-ruben { --kal-voll: #fdba74; } }
+@media (min-width: 700px) { .kal { min-height: 760px; } }
+.kal-filter[hidden] { display: flex !important; visibility: hidden; }
+.kal-filter { min-height: 48px; }
