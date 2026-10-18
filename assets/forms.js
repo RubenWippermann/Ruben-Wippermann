@@ -67,10 +67,13 @@
       if (btn) { btn.disabled = true; btn.textContent = "Wird gesendet …"; }
       setStatus(status, "Anfrage wird gesendet …", "info");
 
+      var ctrl = window.AbortController ? new AbortController() : null;
+      var timer = ctrl ? setTimeout(function () { ctrl.abort(); }, 20000) : null;
       fetch(ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
+        signal: ctrl ? ctrl.signal : undefined
       }).then(function (res) {
         if (res.status === 429) {
           throw new Error("rate");
@@ -90,6 +93,7 @@
           setStatus(status, "Senden hat gerade nicht geklappt. Bitte direkt an kontakt@ruben-wippermann.de schreiben.", "error");
         }
       }).then(function () {
+        if (timer) clearTimeout(timer);
         if (btn) { btn.disabled = false; btn.textContent = label; }
       });
     });
