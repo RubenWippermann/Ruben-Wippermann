@@ -126,8 +126,8 @@
 .cta { background: linear-gradient(150deg, #2563d9, #3b82f6) !important; }
 
 /* =======================================================================
-   Immer heller Auftritt – Dunkel-Modus des Systems NICHT übernehmen
-   (Ruben wünscht durchgehend hell & freundlich)
+   Hell ist der Standard. Der Dunkel-Modus des Systems wird erst in apple.css
+   ergänzt (dort auch color-scheme: dark).
    ======================================================================= */
 :root { color-scheme: light; }
 /* 🔴 AUFGERÄUMT 25.08.: Der alte @media(prefers-color-scheme:dark)-Block mit der
