@@ -40,6 +40,7 @@
     Array.prototype.forEach.call(zahl, function (z) {
       var ziel = parseInt(z.dataset.ziel, 10), t0 = null;
       if (z.dataset.gezaehlt) return;
+      if (z.classList.contains("fx-count")) return; /* fx.js zählt diese Zahl selbst hoch */
       z.dataset.gezaehlt = "1";
       z.textContent = "0";
       function schritt(t) {
