@@ -394,7 +394,7 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
   .company--lead { grid-row: auto; }
 }
 /* Ohne Lead-Karte (Unternehmen): gleichrangige Karten gleich breit */
-@media (min-width: 801px) { .company-grid:not(:has(.company--lead)) { grid-template-columns: 1fr 1fr !important; } }
+@media (min-width: 801px) { .company-grid--gleich { grid-template-columns: 1fr 1fr !important; } }
 
 /* ---------- Angebote: eine große, zwei kleine Flächen mit Ziffern ---------- */
 .offers { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; }
@@ -481,3 +481,6 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
 @media (min-width: 700px) { .kal { min-height: 760px; } }
 .kal-filter[hidden] { display: flex !important; visibility: hidden; }
 .kal-filter { min-height: 48px; }
+
+/* Druck: Einblend-Elemente immer sichtbar */
+@media print { .has-reveal .reveal { opacity: 1 !important; transform: none !important; } }
