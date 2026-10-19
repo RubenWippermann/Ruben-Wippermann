@@ -250,6 +250,9 @@ a { color: var(--primary); }
   color: var(--ink) !important;
   box-shadow: none !important;
 }
+@media (prefers-color-scheme: dark) {
+  .cta-bar { background: rgba(29, 29, 31, .96) !important; }  /* --ink ist im Dunkelmodus hell: Leiste darf nicht weiss bleiben */
+}
 .cta p { color: var(--muted) !important; margin-inline: auto; }
 
 /* ---------- Formulare ---------- */
