@@ -175,7 +175,7 @@ h1, h2, h3, h4, h5, h6, dt, th { overflow-wrap: break-word; -webkit-hyphens: aut
 :root{
   --bg:#f4f8fd; --bg-soft:#e6f0fb; --surface:#ffffff; --surface-2:#e3eefb;
   --ink:#152238; --ink-soft:#394962; --muted:#54607a; --line:#d7e4f4;
-  --primary:#1f6fc0; --primary-strong:#17548f; --primary-ink:#ffffff;
+  --primary:#0b63a9; --primary-strong:#084e86; --primary-ink:#ffffff;
   --ring:rgba(31,111,192,.30);
   --shadow:0 12px 28px -16px rgba(20,45,80,.22);
   --shadow-lg:0 30px 60px -26px rgba(20,45,80,.30);
@@ -184,7 +184,7 @@ h1, h2, h3, h4, h5, h6, dt, th { overflow-wrap: break-word; -webkit-hyphens: aut
   :root{
     --bg:#f4f8fd; --bg-soft:#e6f0fb; --surface:#ffffff; --surface-2:#e3eefb;
     --ink:#152238; --ink-soft:#394962; --muted:#54607a; --line:#d7e4f4;
-    --primary:#1f6fc0; --primary-strong:#17548f; --primary-ink:#ffffff;
+    --primary:#0b63a9; --primary-strong:#084e86; --primary-ink:#ffffff;
     --ring:rgba(31,111,192,.30);
     --shadow:0 12px 28px -16px rgba(20,45,80,.22);
     --shadow-lg:0 30px 60px -26px rgba(20,45,80,.30);
