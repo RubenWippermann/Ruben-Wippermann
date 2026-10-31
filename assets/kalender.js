@@ -318,7 +318,7 @@
   var BWW = 'https://www.multiplikatorenstelle.de';
   Kalender.prototype.rechtBlock = function () {
     if (!this.zeigeVeranstalter) return;
-    var hat = Object.keys(this.proTag).some(function (t) { return this.proTag[t].some(function (x) { return x.k._org === 'bww'; }); }, this);
+    var hat = this.kurse.some(function (k) { return k._org === 'bww'; });   // unabhaengig von Filter und Monat
     var el = this.el.querySelector('.kal-recht');
     if (!hat) { if (el) el.hidden = true; return; }
     if (!el) { el = document.createElement('div'); el.className = 'kal-recht'; this.body.parentNode.insertBefore(el, this.body); }
