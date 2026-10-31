@@ -4,6 +4,8 @@
   "use strict";
   var mm = window.matchMedia;
   if (!mm || mm("(prefers-reduced-motion: reduce)").matches) return;
+  var cx = navigator.connection;
+  if (cx && (cx.saveData || /(^|-)2g$/.test(cx.effectiveType || ""))) return;   /* Datensparmodus: keine Effekte */
   var fine = mm("(hover: hover) and (pointer: fine)").matches;
   var doc = document, root = doc.documentElement;
   var raf = window.requestAnimationFrame.bind(window);
