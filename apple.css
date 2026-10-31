@@ -496,7 +496,8 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
 :root {
   --glas-blur: blur(26px) saturate(1.6);
   --glas-fuell: rgba(255, 255, 255, 0.82);
-  --glas-fuell-kopf: rgba(255, 255, 255, 0.86);
+  --glas-fuell-kopf: rgba(255, 255, 255, 0.92); /* 92 %: Link #0b63a9 >= 5,2:1 auch ueber dunklem Hero-Foto */
+  --text-muted-glas: #55555a;                   /* gedaempfter Text auf Glas: >= 4,85:1 im Worst Case */
   --glas-licht: inset 0 1px 0 rgba(255, 255, 255, 0.95);
   --glas-schatten: 0 2px 6px rgba(20, 36, 60, 0.05), 0 24px 60px rgba(20, 36, 60, 0.12);
   --glas-ton: rgba(11, 99, 169, 0.10);
@@ -506,6 +507,7 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
   :root {
     --glas-fuell: rgba(28, 28, 30, 0.88);
     --glas-fuell-kopf: rgba(28, 28, 30, 0.90);
+    --text-muted-glas: #b0b0b5;
     --glas-licht: inset 0 1px 0 rgba(255, 255, 255, 0.10);
     --glas-schatten: 0 2px 6px rgba(0, 0, 0, 0.35), 0 24px 60px rgba(0, 0, 0, 0.55);
     --glas-ton: rgba(77, 155, 224, 0.16);
@@ -533,6 +535,8 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
       box-shadow: var(--glas-licht), var(--glas-schatten) !important;
     }
     .card:hover, .company:hover { box-shadow: var(--glas-licht), var(--glas-schatten) !important; }
+    /* gedaempfter Text auf Glas bekommt den eigenen, dunkleren Token */
+    .nav, .card, .company, .offer, .offer-card, .kal-agtag, .contact__method, .form { --muted: var(--text-muted-glas); }
     /* Formularrahmen als Panel; Felder darin bleiben deckend (Regel 1) */
     .form { padding: clamp(20px, 3vw, 32px); }
     /* Fokus hat Vorrang: keine Lichtkante auf fokussierten Feldern */
