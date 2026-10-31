@@ -561,3 +561,6 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
 .cta__link { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
 .cta__link:hover { color: var(--primary-strong); }
 .nav__toggle svg { display: block; }
+
+/* SEO/GEO 31.10.: sichtbares Stand-Datum unter der Seitenueberschrift */
+.subhero__stand { font-size: .88rem; color: var(--muted); margin-top: 10px; }
