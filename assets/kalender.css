@@ -137,3 +137,8 @@
   --kal-voll-bg: transparent;
 }
 .kal.kal-ruben .kal-cta, .kal.kal-ruben .kal-tag.is-heute .kal-nr, .kal.kal-ruben .kal-agtag.is-heute .kal-agnr { color: var(--primary-ink, #fff); background: var(--primary, #0b63a9); }
+
+/* Fremdbuchung: Pflichtangaben auf der Kurskarte */
+.kal-recht { margin: 12px 0 0; font-size: .86rem; color: var(--kal-muted, var(--muted)); }
+.kal-recht p { margin: 0 0 6px; }
+.kal-recht a { text-decoration: underline; text-underline-offset: 2px; }

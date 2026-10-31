@@ -135,7 +135,7 @@
         .then(function (r) { if (!r.ok) throw new Error('http_' + r.status); return r.json(); })
         .then(function (d) {
           var v = d && d.veranstalter && (d.veranstalter.name || d.veranstalter.kurzname);   // exakter Feed-Name (Impressum-Firmierung)
-          return ((d && d.kurse) || []).map(function (k) { k._org = org; k._veranstalter = v || ''; return k; });
+          return ((d && d.kurse) || []).map(function (k) { k._org = org; k._veranstalter = v || ''; k._v = (d && d.veranstalter) || null; return k; });
         })
         .catch(function () { return null; });
     })).then(function (listen) {
@@ -300,6 +300,8 @@
           var ev = { '@type': 'Event', name: titelAnzeige(k.titel), startDate: tag + (x.von ? 'T' + x.von : ''),
             eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode', eventStatus: 'https://schema.org/EventScheduled', url: url };
           if (x.bis) ev.endDate = tag + 'T' + x.bis;
+          var ortTxt = k.adresse || k.stadt;
+          if (ortTxt) ev.location = { '@type': 'Place', name: k.stadt || ortTxt, address: ortTxt };
           if (k._veranstalter) ev.organizer = { '@type': 'Organization', name: k._veranstalter };
           if (k.preis != null && k.preis !== '' && !isNaN(Number(k.preis))) ev.offers = { '@type': 'Offer', price: String(Number(k.preis)), priceCurrency: 'EUR', url: url, availability: 'https://schema.org/InStock' };
           liste.push(ev);
@@ -309,6 +311,20 @@
       if (!tagEl) { tagEl = document.createElement('script'); tagEl.type = 'application/ld+json'; tagEl.id = 'kal-schema'; document.head.appendChild(tagEl); }
       tagEl.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': liste });
     } catch (err) { /* ohne Strukturdaten weiter */ }
+  };
+
+  // Pflichtangaben bei Fremdbuchung (Veranstalter mit Rechtsform und Anschrift, Impressum, AGB, Widerruf, Vermittlerhinweis).
+  // Die Links gelten nur fuer BWW; Anschrift kommt aus dem Feed (veranstalter), nichts davon ist erfunden.
+  var RECHT = { bww: { basis: 'https://www.multiplikatorenstelle.de' } };
+  Kalender.prototype.recht = function (k) {
+    var r = RECHT[k._org], v = k._v;
+    if (!this.zeigeVeranstalter || !r || !v || !v.name) return '';
+    var anschrift = [v.strasse, v.ort].filter(Boolean).join(', ');
+    return '<div class="kal-recht"><p><strong>Veranstalter:</strong> ' + esc(v.name) + (anschrift ? ', ' + esc(anschrift) : '') + '. ' +
+      '<a href="' + r.basis + '/impressum/" target="_blank" rel="noopener">Impressum des Veranstalters</a>. Es gelten die ' +
+      '<a href="' + r.basis + '/agb/" target="_blank" rel="noopener">AGB</a> und die ' +
+      '<a href="' + r.basis + '/widerruf/" target="_blank" rel="noopener">Widerrufsbelehrung</a> des Veranstalters.</p>' +
+      '<p>Vermittelt über ruben-wippermann.de; Vertragspartner ist die ' + esc(v.name) + '.</p></div>';
   };
 
   Kalender.prototype.karte = function (e, tag) {
@@ -335,7 +351,7 @@
         (ort ? '<div><dt>Ort</dt><dd>' + esc(ort) + '</dd></div>' : '') +
         '<div><dt>Preis</dt><dd>' + preisText(k.preis) + '</dd></div>' +
         (this.zeigeVeranstalter && k._veranstalter ? '<div><dt>Veranstalter</dt><dd>' + esc(k._veranstalter) + '</dd></div>' : '') +
-      '</dl><div class="kal-aktion">' + aktion + '</div></article>';
+      '</dl>' + this.recht(k) + '<div class="kal-aktion">' + aktion + '</div></article>';
   };
 
   Kalender.prototype.agenda = function (y, m, anz) {
