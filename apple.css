@@ -37,7 +37,7 @@
     --ink-soft: #d2d2d7;
     --muted: #a1a1a6;
     --line: rgba(255, 255, 255, 0.16);
-    --primary: #4a9ee0;
+    --primary: #4d9be0;
     --primary-strong: #7ab8ee;
     --primary-ink: #04122b;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 10px 30px -18px rgba(0, 0, 0, 0.8);
@@ -484,3 +484,71 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
 
 /* Druck: Einblend-Elemente immer sichtbar */
 @media print { .has-reveal .reveal { opacity: 1 !important; transform: none !important; } }
+
+/* =========================================================================
+   GLAS-OPTIK (31.10.2026, CD-Richtlinie Koordinator/cd/software.md Kap. 13)
+   Glas nur auf Kopfzeile, Karten (Leistungen, Firmen, Kalender-Agenda) und dem
+   Kontaktformular-Rahmen. Eingabefelder, Tabellen, Fliesstext bleiben deckend.
+   Kein Glas auf Glas: die inneren Teile der Karten haben keinen backdrop-filter.
+   Akzent nur als Tönung des Grundes (--primary), keine neue Farbe.
+   Kontraste (Rechnung, Worst Case) siehe Koordinator/ruben-glas-31-10.md.
+   ========================================================================= */
+:root {
+  --glas-blur: blur(26px) saturate(1.6);
+  --glas-fuell: rgba(255, 255, 255, 0.82);
+  --glas-fuell-kopf: rgba(255, 255, 255, 0.86);
+  --glas-licht: inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  --glas-schatten: 0 2px 6px rgba(20, 36, 60, 0.05), 0 24px 60px rgba(20, 36, 60, 0.12);
+  --glas-ton: rgba(11, 99, 169, 0.10);
+  --glas-radius: 22px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --glas-fuell: rgba(28, 28, 30, 0.88);
+    --glas-fuell-kopf: rgba(28, 28, 30, 0.90);
+    --glas-licht: inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    --glas-schatten: 0 2px 6px rgba(0, 0, 0, 0.35), 0 24px 60px rgba(0, 0, 0, 0.55);
+    --glas-ton: rgba(77, 155, 224, 0.16);
+  }
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  @media not (prefers-reduced-transparency: reduce) {
+    /* Grund hinter dem Glas: leichte Akzenttönung, damit die Karten sich abheben */
+    .section--soft {
+      background-image:
+        radial-gradient(60% 55% at 12% 0%, var(--glas-ton), transparent 70%),
+        radial-gradient(50% 50% at 92% 100%, var(--glas-ton), transparent 70%);
+    }
+    .nav {
+      background: var(--glas-fuell-kopf) !important;
+      -webkit-backdrop-filter: var(--glas-blur);
+      backdrop-filter: var(--glas-blur);
+      box-shadow: var(--glas-licht) !important;
+    }
+    .card, .company, .offer, .offer-card, .kal-agtag, .contact__method, .form {
+      background: var(--glas-fuell) !important;
+      border-radius: var(--glas-radius) !important;
+      -webkit-backdrop-filter: var(--glas-blur);
+      backdrop-filter: var(--glas-blur);
+      box-shadow: var(--glas-licht), var(--glas-schatten) !important;
+    }
+    .card:hover, .company:hover { box-shadow: var(--glas-licht), var(--glas-schatten) !important; }
+    /* Formularrahmen als Panel; Felder darin bleiben deckend (Regel 1) */
+    .form { padding: clamp(20px, 3vw, 32px); }
+    /* Fokus hat Vorrang: keine Lichtkante auf fokussierten Feldern */
+    .form:focus-within { box-shadow: var(--glas-licht), var(--glas-schatten) !important; }
+  }
+}
+/* Reduzierte Transparenz und Kontrast: deckend, ohne Filter */
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .nav, .card, .company, .offer, .offer-card, .kal-agtag, .contact__method, .form {
+    -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+  }
+}
+/* Druck: jede Glasfläche deckend weiss, ohne Filter und Schatten */
+@media print {
+  .nav, .card, .company, .offer, .offer-card, .kal-agtag, .contact__method, .form {
+    background: #fff !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; box-shadow: none !important;
+  }
+  .section--soft { background-image: none !important; }
+}

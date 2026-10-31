@@ -15,7 +15,7 @@
 
   /* ---------- Lese-Fortschritt (Marken-Blau) ---------- */
   .fx-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 100; pointer-events: none;
-    background: linear-gradient(90deg, #4a9ee0, #0b63a9 60%, #7ab8ee); transform-origin: 0 50%; transform: scaleX(0);
+    background: linear-gradient(90deg, #4d9be0, #0b63a9 60%, #7ab8ee); transform-origin: 0 50%; transform: scaleX(0);
     box-shadow: 0 0 12px rgba(77,142,245,.65); }
 
   /* ---------- Hero: Kamerafahrt, Lichtkegel, Herzschlag-Linie, Buchstaben-Auftritt ---------- */
