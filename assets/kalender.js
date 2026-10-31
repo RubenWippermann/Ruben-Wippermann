@@ -135,7 +135,7 @@
         .then(function (r) { if (!r.ok) throw new Error('http_' + r.status); return r.json(); })
         .then(function (d) {
           var v = d && d.veranstalter && (d.veranstalter.name || d.veranstalter.kurzname);   // exakter Feed-Name (Impressum-Firmierung)
-          return ((d && d.kurse) || []).map(function (k) { k._org = org; k._veranstalter = v || ''; k._v = (d && d.veranstalter) || null; return k; });
+          return ((d && d.kurse) || []).map(function (k) { k._org = org; k._veranstalter = v || ''; return k; });
         })
         .catch(function () { return null; });
     })).then(function (listen) {
@@ -247,6 +247,7 @@
       html = this.raster(y, m, anz, erster) + leer;
     }
     this.schema(y, m, anz);
+    this.rechtBlock();
     this.body.innerHTML = '<div class="kal-blatt' + (richtung === 'filter' ? ' kal-rein-f' : richtung ? (richtung > 0 ? ' kal-rein-r' : ' kal-rein-l') : '') + '">' + html + '</div>';
     if (!this.mobil()) {
       if (this.gewaehlt) this.zeigeDetail(this.gewaehlt, false); else this.detail.hidden = true;
@@ -313,18 +314,20 @@
     } catch (err) { /* ohne Strukturdaten weiter */ }
   };
 
-  // Pflichtangaben bei Fremdbuchung (Veranstalter mit Rechtsform und Anschrift, Impressum, AGB, Widerruf, Vermittlerhinweis).
-  // Die Links gelten nur fuer BWW; Anschrift kommt aus dem Feed (veranstalter), nichts davon ist erfunden.
-  var RECHT = { bww: { basis: 'https://www.multiplikatorenstelle.de' } };
-  Kalender.prototype.recht = function (k) {
-    var r = RECHT[k._org], v = k._v;
-    if (!this.zeigeVeranstalter || !r || !v || !v.name) return '';
-    var anschrift = [v.strasse, v.ort].filter(Boolean).join(', ');
-    return '<div class="kal-recht"><p><strong>Veranstalter:</strong> ' + esc(v.name) + (anschrift ? ', ' + esc(anschrift) : '') + '. ' +
-      '<a href="' + r.basis + '/impressum/" target="_blank" rel="noopener">Impressum des Veranstalters</a>. Es gelten die ' +
-      '<a href="' + r.basis + '/agb/" target="_blank" rel="noopener">AGB</a> und die ' +
-      '<a href="' + r.basis + '/widerruf/" target="_blank" rel="noopener">Widerrufsbelehrung</a> des Veranstalters.</p>' +
-      '<p>Diese Website vermittelt den Kurs im Namen des Veranstalters.</p></div>';
+  // Pflichtangaben bei Fremdbuchung: EIN Block ueber der Terminliste, sobald BWW-Termine angezeigt werden (Wortlaut Betriebsleitung).
+  var BWW = 'https://www.multiplikatorenstelle.de';
+  Kalender.prototype.rechtBlock = function () {
+    if (!this.zeigeVeranstalter) return;
+    var hat = Object.keys(this.proTag).some(function (t) { return this.proTag[t].some(function (x) { return x.k._org === 'bww'; }); }, this);
+    var el = this.el.querySelector('.kal-recht');
+    if (!hat) { if (el) el.hidden = true; return; }
+    if (!el) { el = document.createElement('div'); el.className = 'kal-recht'; this.body.parentNode.insertBefore(el, this.body); }
+    el.hidden = false;
+    el.innerHTML = '<p><strong>Veranstalter:</strong> BWW UG (haftungsbeschränkt), Worbiser Straße 2, 37115 Duderstadt. ' +
+      '<a href="' + BWW + '/impressum/" target="_blank" rel="noopener">Impressum des Veranstalters</a>. Es gelten die ' +
+      '<a href="' + BWW + '/agb/" target="_blank" rel="noopener">AGB</a> und die ' +
+      '<a href="' + BWW + '/widerruf/" target="_blank" rel="noopener">Widerrufsbelehrung</a> des Veranstalters. ' +
+      'Preis je Termin laut Zeile. Diese Website vermittelt den Kurs im Namen des Veranstalters.</p>';
   };
 
   Kalender.prototype.karte = function (e, tag) {
@@ -351,7 +354,7 @@
         (ort ? '<div><dt>Ort</dt><dd>' + esc(ort) + '</dd></div>' : '') +
         '<div><dt>Preis</dt><dd>' + preisText(k.preis) + '</dd></div>' +
         (this.zeigeVeranstalter && k._veranstalter ? '<div><dt>Veranstalter</dt><dd>' + esc(k._veranstalter) + '</dd></div>' : '') +
-      '</dl>' + this.recht(k) + '<div class="kal-aktion">' + aktion + '</div></article>';
+      '</dl><div class="kal-aktion">' + aktion + '</div></article>';
   };
 
   Kalender.prototype.agenda = function (y, m, anz) {
