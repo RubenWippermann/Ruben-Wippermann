@@ -437,17 +437,12 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
 #pepa-shop { min-height: 720px; }
 #pepa-shop select.pepa-auswahl, #pepa-shop input { background: var(--surface) !important; color: var(--ink) !important; border: 1px solid var(--line) !important; border-radius: 12px !important; min-height: 44px; }
 
-/* ---------- Hero-Einstieg: gestaffelt, nur transform/opacity, endet immer sichtbar ---------- */
+/* ---------- Hero-Einstieg: Text steht sofort; nur die Unterlinie faehrt ein (transform), endet immer sichtbar ---------- */
+.hero h1::after { content: ""; display: block; width: 72px; height: 3px; margin-top: 16px; background: currentColor; border-radius: 2px; transform-origin: 0 50%; }
 @media (prefers-reduced-motion: no-preference) {
-  .hero__eyebrow, .hero h1, .hero__lead, .hero__actions { animation: heroEinblenden 560ms cubic-bezier(.2,.7,.2,1) both; }
-  .hero h1 { animation-delay: 80ms; }
-  .hero__lead { animation-delay: 160ms; }
-  .hero__actions { animation-delay: 240ms; }
+  .hero h1::after { animation: heroLinie 600ms cubic-bezier(.2,.8,.2,1) 200ms both; }
 }
-@keyframes heroEinblenden {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: none; }
-}
+@keyframes heroLinie { from { transform: scaleX(0); } to { transform: none; } }
 
 /* A3-Abstand: mind. 12 px (mobil) bzw. 16 px (ab 768 px) zwischen Knoepfen der Kontaktaufforderung. */
 .cta__actions { gap: 12px; }

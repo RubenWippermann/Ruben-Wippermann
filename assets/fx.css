@@ -19,7 +19,6 @@
     box-shadow: 0 0 12px rgba(77,142,245,.65); }
 
   /* ---------- Hero: Kamerafahrt, Lichtkegel, Herzschlag-Linie, Buchstaben-Auftritt ---------- */
-  .fx-hero .hero__media { will-change: transform; }
   .fx-hero .hero__poster { animation: fx-kenburns 26s ease-in-out infinite alternate; transform-origin: 62% 35%; }
   @keyframes fx-kenburns { from { transform: scale(1.02); } to { transform: scale(1.11) translate3d(-1.2%, -.8%, 0); } }
 
@@ -36,15 +35,7 @@
   @keyframes fx-ekg { 0% { stroke-dashoffset: 340; opacity: 1; } 55% { stroke-dashoffset: 0; opacity: 1; } 85% { stroke-dashoffset: 0; opacity: 0; } 100% { stroke-dashoffset: 340; opacity: 0; } }
 
   .fx-word { display: inline-block; white-space: nowrap; }
-  .fx-ch { display: inline-block; opacity: 0; transform: translate3d(0, .55em, 0) rotate(5deg); filter: blur(8px);
-    animation: fx-ch-in 820ms cubic-bezier(.16,1,.3,1) forwards; animation-delay: calc(120ms + var(--i) * 46ms); }
-  @keyframes fx-ch-in { to { opacity: 1; transform: none; filter: blur(0); } }
-  .fx-hero .hero__eyebrow, .fx-hero .hero__lead, .fx-hero .hero__cta { opacity: 0; transform: translate3d(0, 18px, 0);
-    animation: fx-up 900ms cubic-bezier(.16,1,.3,1) forwards; }
-  .fx-hero .hero__eyebrow { animation-delay: 60ms; }
-  .fx-hero .hero__lead { animation-delay: 780ms; }
-  .fx-hero .hero__cta { animation-delay: 980ms; }
-  @keyframes fx-up { to { opacity: 1; transform: none; } }
+  .fx-ch { display: inline-block; }
 
   /* ---------- Überschriften: Linie zeichnet sich ---------- */
   .section__head h2 { position: relative; padding-bottom: 14px; }
@@ -69,8 +60,7 @@
 
   /* ---------- Kennzahlen ---------- */
   .fx-count { display: inline-block; font-variant-numeric: tabular-nums; }
-  .fx-pop { display: inline-block; opacity: 0; letter-spacing: .28em; filter: blur(6px); transition: opacity 800ms ease, letter-spacing 1000ms cubic-bezier(.16,1,.3,1), filter 800ms ease; }
-  .stat.is-in .fx-pop { opacity: 1; letter-spacing: -.04em; filter: blur(0); }
+  .fx-pop { display: inline-block; }
 
   /* ---------- Porträt: Wisch-Auftritt + sanfter Zoom ---------- */
   .has-reveal .split .split__media img { clip-path: inset(0 0 100% 0); transform: scale(1.14);

@@ -79,5 +79,5 @@
   setTimeout(function () {
     if (fired) return;
     items.forEach(function (el) { el.classList.add("is-in"); zaehleHoch(el); });
-  }, 2000);
+  }, 1000);
 })();
