@@ -556,3 +556,8 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
   }
   .section--soft { background-image: none !important; }
 }
+
+/* Design-Durchgang 31.10.: zweite CTA als Textlink, Menue-Icon als SVG */
+.cta__link { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+.cta__link:hover { color: var(--primary-strong); }
+.nav__toggle svg { display: block; }
