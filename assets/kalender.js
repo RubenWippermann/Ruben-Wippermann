@@ -324,7 +324,7 @@
       '<a href="' + r.basis + '/impressum/" target="_blank" rel="noopener">Impressum des Veranstalters</a>. Es gelten die ' +
       '<a href="' + r.basis + '/agb/" target="_blank" rel="noopener">AGB</a> und die ' +
       '<a href="' + r.basis + '/widerruf/" target="_blank" rel="noopener">Widerrufsbelehrung</a> des Veranstalters.</p>' +
-      '<p>Vermittelt über ruben-wippermann.de; Vertragspartner ist die ' + esc(v.name) + '.</p></div>';
+      '<p>Diese Website vermittelt den Kurs im Namen des Veranstalters.</p></div>';
   };
 
   Kalender.prototype.karte = function (e, tag) {
