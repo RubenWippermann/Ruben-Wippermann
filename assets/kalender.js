@@ -134,7 +134,7 @@
       return fetch(self.api + '/api/kurse?org=' + encodeURIComponent(org) + '&ab_datum=' + ab, { credentials: 'omit' })
         .then(function (r) { if (!r.ok) throw new Error('http_' + r.status); return r.json(); })
         .then(function (d) {
-          var v = d && d.veranstalter && (d.veranstalter.kurzname || d.veranstalter.name);
+          var v = d && d.veranstalter && (d.veranstalter.name || d.veranstalter.kurzname);   // exakter Feed-Name (Impressum-Firmierung)
           return ((d && d.kurse) || []).map(function (k) { k._org = org; k._veranstalter = v || ''; return k; });
         })
         .catch(function () { return null; });
@@ -246,6 +246,7 @@
     } else {
       html = this.raster(y, m, anz, erster) + leer;
     }
+    this.schema(y, m, anz);
     this.body.innerHTML = '<div class="kal-blatt' + (richtung === 'filter' ? ' kal-rein-f' : richtung ? (richtung > 0 ? ' kal-rein-r' : ' kal-rein-l') : '') + '">' + html + '</div>';
     if (!this.mobil()) {
       if (this.gewaehlt) this.zeigeDetail(this.gewaehlt, false); else this.detail.hidden = true;
@@ -280,6 +281,34 @@
       '<div class="kal-zeile kal-wt" role="row">' + WT_KURZ.map(function (w, j) {
         return '<div class="kal-wtag" role="columnheader"><abbr title="' + WT_LANG[j] + '">' + w + '</abbr></div>';
       }).join('') + '</div>' + zeilen + '</div>';
+  };
+
+  // Event-Strukturdaten NUR fuer die Kurse des angezeigten Monats und nur mit Angaben, die auch auf der Kurskarte stehen
+  // (Titel, Datum/Uhrzeit, Preis, Veranstalter, Buchungslink). Fehler duerfen den Kalender nie stoeren.
+  Kalender.prototype.schema = function (y, m, anz) {
+    try {
+      var self = this, gezeigt = [], liste = [];
+      for (var d = 1; d <= anz; d++) {
+        var tag = iso(y, m, d), e = this.proTag[tag];
+        if (!e) continue;
+        e.forEach(function (x) {
+          var k = x.k;
+          if (gezeigt.indexOf(k) >= 0 || k.ausgebucht) return;
+          gezeigt.push(k);
+          var url = sichereUrl(k.buchungs_url) || (self.api + '/buchen/?termin=' + encodeURIComponent(k.id || ''));
+          url = anhaengen(url, 'org', k._org);
+          var ev = { '@type': 'Event', name: titelAnzeige(k.titel), startDate: tag + (x.von ? 'T' + x.von : ''),
+            eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode', eventStatus: 'https://schema.org/EventScheduled', url: url };
+          if (x.bis) ev.endDate = tag + 'T' + x.bis;
+          if (k._veranstalter) ev.organizer = { '@type': 'Organization', name: k._veranstalter };
+          if (k.preis != null && k.preis !== '' && !isNaN(Number(k.preis))) ev.offers = { '@type': 'Offer', price: String(Number(k.preis)), priceCurrency: 'EUR', url: url, availability: 'https://schema.org/InStock' };
+          liste.push(ev);
+        });
+      }
+      var tagEl = document.getElementById('kal-schema');
+      if (!tagEl) { tagEl = document.createElement('script'); tagEl.type = 'application/ld+json'; tagEl.id = 'kal-schema'; document.head.appendChild(tagEl); }
+      tagEl.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': liste });
+    } catch (err) { /* ohne Strukturdaten weiter */ }
   };
 
   Kalender.prototype.karte = function (e, tag) {
