@@ -563,3 +563,33 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
 .stats__grid { grid-template-columns: repeat(2, minmax(0, 320px)); justify-content: center; gap: 24px 48px; }
 @media (max-width: 520px) { .stats__grid { grid-template-columns: 1fr 1fr; gap: 20px; } }
 @media (max-width: 520px) { .stats__grid .stat__num { font-size: 1.9rem; overflow-wrap: anywhere; } }
+
+/* ---------- Ordnung: gleichwertige, symmetrische Raster (02.11.) ---------- */
+.company-grid, .company-grid--gleich, .offers { display: grid; gap: 20px !important; }
+@media (min-width: 900px) {
+  .company-grid, .company-grid--gleich, .offers { grid-template-columns: repeat(3, 1fr) !important; }
+}
+@media (max-width: 899px) {
+  .company-grid, .company-grid--gleich, .offers { grid-template-columns: 1fr !important; }
+}
+.company--lead, .offer-card--lead { grid-row: auto !important; min-height: 0 !important; display: block; padding: clamp(24px, 3vw, 36px) !important; }
+.company--lead h3, .offer-card--lead h3 { font-size: 1.25rem; }
+.company, .offer-card { display: flex; flex-direction: column; }
+.company__body { display: flex; flex-direction: column; flex: 1; }
+.company__body > :last-child, .offer-card > :last-child { margin-top: auto; padding-top: 14px; }
+.offer-card__no { margin-bottom: 14px; padding-bottom: 0; }
+.trust__row { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; justify-content: stretch; }
+.trust__row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.trust__item { flex: 0 1 calc((100% - 24px) / 3); min-width: 240px; }
+.company .clogo { width: auto; margin: 0 0 18px; object-position: left center; align-self: flex-start; }
+.subhero p.subhero__stand { margin-top: 14px; font-size: .9rem; color: var(--muted) !important; }
+/* Hero: nur eine Zierlinie (Unterstrich), kein zusätzlicher EKG-Strich */
+.fx-ekg { display: none !important; }
+/* Vertrauensleiste: gleich breite, gleich hohe Felder, bündig mit dem Raster */
+.trust__row { width: 100%; box-sizing: border-box; margin-inline: auto; max-width: min(var(--maxw), 100% - 2 * clamp(16px, 4vw, 32px)); padding-inline: 0; align-items: stretch; }
+.trust__item { box-sizing: border-box; flex: 0 1 calc((100% - 24px) / 3); max-width: calc((100% - 24px) / 3); border-radius: 16px !important; }
+@media (max-width: 899px) { .trust__item { flex-basis: calc((100% - 12px) / 2); max-width: calc((100% - 12px) / 2); } }
+@media (max-width: 640px) { .trust__item { flex-basis: 100%; max-width: 100%; } }
+/* Einheitliche Innenabstände für Karten und Formulare; Navigation einzeilig */
+.offer, .form, .note { padding: clamp(24px, 3vw, 36px) !important; }
+.nav__links a { white-space: nowrap; }
