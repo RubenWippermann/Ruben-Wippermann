@@ -559,3 +559,6 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
 
 /* SEO/GEO 31.10.: sichtbares Stand-Datum unter der Seitenueberschrift */
 .subhero__stand { font-size: .88rem; color: var(--muted); margin-top: 10px; }
+/* Zahlenleiste mit zwei Werten: mittig und gleich breit */
+.stats__grid { grid-template-columns: repeat(2, minmax(0, 320px)); justify-content: center; gap: 24px 48px; }
+@media (max-width: 520px) { .stats__grid { grid-template-columns: 1fr 1fr; gap: 20px; } }
