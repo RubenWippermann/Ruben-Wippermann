@@ -76,3 +76,9 @@
 @media (hover: none), (pointer: coarse) {
   .fx-spot, .fx-glare { display: none !important; }
 }
+
+/* Lenis (sanftes Scrollen), Grundregeln aus lenis.css 1.3.27 */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
