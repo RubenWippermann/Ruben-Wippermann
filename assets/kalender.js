@@ -327,7 +327,7 @@
       '<a href="' + BWW + '/impressum/" target="_blank" rel="noopener">Impressum des Veranstalters</a>. Es gelten die ' +
       '<a href="' + BWW + '/agb/" target="_blank" rel="noopener">AGB</a> und die ' +
       '<a href="' + BWW + '/widerruf/" target="_blank" rel="noopener">Widerrufsbelehrung</a> des Veranstalters. ' +
-      'Preis je Termin laut Zeile. Diese Website vermittelt den Kurs im Namen des Veranstalters.</p>';
+      'Preis je Termin laut Zeile. Diese Website vermittelt den Kurs im Namen des Veranstalters. Mit der Buchung schließen Sie den Vertrag mit der BWW UG.</p>';
   };
 
   Kalender.prototype.karte = function (e, tag) {
