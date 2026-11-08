@@ -39,9 +39,9 @@
       h1.setAttribute("aria-label", text.replace(/ /g, " "));
       h1.textContent = "";
       var n = 0;
-      text.split(/(\s+)/).forEach(function (w) {
+      text.split(/([ \t\r\n]+)/).forEach(function (w) {
         if (!w) return;
-        if (/^\s+$/.test(w)) { h1.appendChild(doc.createTextNode(" ")); return; }
+        if (/^[ \t\r\n]+$/.test(w)) { h1.appendChild(doc.createTextNode(" ")); return; }
         var word = doc.createElement("span");
         word.className = "fx-word";
         word.setAttribute("aria-hidden", "true");
