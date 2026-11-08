@@ -596,3 +596,9 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
 
 /* Kennzeichnung "KI-bearbeitet" im Hero: liegt ueber der Abdunklung (z-index 2), Weiss auf mind. 72 % Schwarz = Kontrast >= 7:1, hell und dunkel */
 .hero__ki { position: absolute; right: 12px; bottom: 10px; z-index: 2; font-size: .8rem; line-height: 1.4; color: #fff; background: rgba(0, 0, 0, 0.72); padding: 2px 10px; border-radius: 999px; }
+
+/* Press-Rueckmeldung: Karte gibt kurz nach, solange ihr Link gedrueckt wird (nur transform, ohne reduzierte Bewegung) */
+@media (prefers-reduced-motion: no-preference) {
+  .company, .offer-card { transition: transform 150ms ease-out, box-shadow 150ms ease-out; }
+  .company:has(a:active), .offer-card:has(a:active) { transform: scale(0.985); }
+}
