@@ -593,3 +593,6 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
 /* Einheitliche Innenabstände für Karten und Formulare; Navigation einzeilig */
 .offer, .form, .note { padding: clamp(24px, 3vw, 36px) !important; }
 .nav__links a { white-space: nowrap; }
+
+/* Kennzeichnung "KI-bearbeitet" im Hero: liegt ueber der Abdunklung (z-index 2), Weiss auf mind. 72 % Schwarz = Kontrast >= 7:1, hell und dunkel */
+.hero__ki { position: absolute; right: 12px; bottom: 10px; z-index: 2; font-size: .8rem; line-height: 1.4; color: #fff; background: rgba(0, 0, 0, 0.72); padding: 2px 10px; border-radius: 999px; }
