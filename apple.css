@@ -630,3 +630,5 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
   .form__status.is-ok, .form__status.is-error { animation: st-in 200ms ease-out; }
   @keyframes st-in { from { opacity: 0; transform: translateY(4px); } }
 }
+/* Zustimmungstext als ein Flex-Element (sonst zerfaellt der Satz am Link in einzelne Spalten und das Formular laeuft ueber) */
+.form .form__consent span { min-width: 0; flex: 1 1 auto; }
