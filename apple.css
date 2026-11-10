@@ -322,7 +322,10 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
 
 /* ---------- Bewegung ---------- */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  /* nur Bewegung abschalten; Farb-, Deckkraft- und Fokusuebergaenge bleiben (hoechstens 150 ms) */
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  a, button, input, textarea, .btn, .card, .company, .offer-card, .fx-tilt::before {
+    transition-property: color, background-color, border-color, outline-color, opacity !important; transition-duration: 150ms !important; }
 }
 
 /* ---------- Mobil ---------- */
@@ -601,4 +604,29 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
 @media (prefers-reduced-motion: no-preference) {
   .company, .offer-card { transition: transform 150ms ease-out, box-shadow 150ms ease-out; }
   .company:has(a:active), .offer-card:has(a:active) { transform: scale(0.985); }
+}
+
+/* ---------- Design-Auftrag 10.11. (RW-01 bis RW-14) ---------- */
+/* RW-01: Zustimmungs-Checkbox klein, neben der ersten Textzeile */
+.form .form__consent { display: flex; align-items: flex-start; gap: 10px; }
+.form .form__consent input { min-height: 0; width: 20px; height: 20px; padding: 0; border-radius: 4px !important; flex: 0 0 auto; margin-top: .2em; }
+/* RW-02: Statusfarben als Variablen, im Dunkelmodus >= 4,5:1 */
+:root { --ok: #1f7a34; --err: #b3261e; }
+@media (prefers-color-scheme: dark) { :root { --ok: #5fd07a; --err: #ff8a80; } }
+.form__status { color: var(--muted); }
+.form__status.is-ok { color: var(--ok); }
+.form__status.is-error { color: var(--err); }
+/* RW-03: Footer-Links mind. 44 px Trefferflaeche */
+.footer a { display: inline-flex; align-items: center; min-height: 44px; }
+/* RW-04: kein Doppelpolster in der Leistungen-Karte (Karte hat schon Innenabstand) */
+.offer--nomedia .offer__body { padding: 0; }
+/* RW-12: Logo-Zusatz einzeilig */
+.brand__name small { white-space: nowrap; font-size: .75rem; }
+@media (prefers-reduced-motion: no-preference) {
+  /* RW-09: mobiles Menue blendet weich ein */
+  @starting-style { .nav__links.is-open { opacity: 0; transform: translateY(-8px); } }
+  .nav__links.is-open { transition: opacity 200ms ease, transform 200ms ease; }
+  /* RW-10: Formular-Status blendet ein */
+  .form__status.is-ok, .form__status.is-error { animation: st-in 200ms ease-out; }
+  @keyframes st-in { from { opacity: 0; transform: translateY(4px); } }
 }

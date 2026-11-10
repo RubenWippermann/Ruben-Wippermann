@@ -14,9 +14,9 @@
 
   function setStatus(el, text, kind) {
     el.textContent = text;
-    el.style.color = kind === "error" ? "#b3261e"
-      : kind === "ok" ? "#1f7a34"
-      : "var(--muted)";
+    el.className = kind === "error" ? "form__status is-error"
+      : kind === "ok" ? "form__status is-ok"
+      : "form__status";
   }
 
   function handle(form) {
