@@ -632,3 +632,6 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
 }
 /* Zustimmungstext als ein Flex-Element (sonst zerfaellt der Satz am Link in einzelne Spalten und das Formular laeuft ueber) */
 .form .form__consent span { min-width: 0; flex: 1 1 auto; }
+
+/* Datenschutz-Hinweis unter dem Absenden-Knopf (statt Pflicht-Einwilligung) */
+.form__hinweis { margin: 12px 0 0; font-size: .875rem; line-height: 1.45; color: var(--muted); }
