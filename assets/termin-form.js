@@ -41,7 +41,9 @@
         wunsch_2: val(fd, "wunsch_2"),
         wunsch_3: val(fd, "wunsch_3"),
         anlass: val(fd, "anlass"),
-        website: val(fd, "website") // Honeypot – bei echten Nutzern leer
+        website: val(fd, "website"), // Honeypot – bei echten Nutzern leer
+        hp_zusatz: val(fd, "hp_zusatz"), // Koederfeld (Spamschutz), bei echten Nutzern leer
+        fz_token: val(fd, "fz_token") // Zeit-Token, leer wenn die Zeitfalle aus ist
       };
 
       if (!payload.name || !payload.telefon || !payload.wunsch_1) {
@@ -62,6 +64,12 @@
         body: JSON.stringify(payload),
         signal: ctrl ? ctrl.signal : undefined
       }).then(function (res) {
+        if (res.status === 400) {
+          return res.json().catch(function () { return {}; }).then(function (d) {
+            if (d && d.error === "formular_zeit_ungueltig") throw new Error("zeit");
+            throw new Error("fail");
+          });
+        }
         if (res.status === 429) {
           throw new Error("rate");
         }
@@ -74,7 +82,10 @@
         var ticket = data.ticket_id ? " (Vorgang " + data.ticket_id + ")" : "";
         setStatus(status, "Vielen Dank! Ihre Terminanfrage ist eingegangen" + ticket + ". Ich rufe zeitnah zurück." , "ok");
       }).catch(function (err) {
-        if (err && err.message === "rate") {
+        if (err && err.message === "zeit") {
+          if (window.RWSpam) window.RWSpam.neu(form);
+          setStatus(status, "Bitte noch einmal absenden.", "error");
+        } else if (err && err.message === "rate") {
           setStatus(status, "Zu viele Anfragen in kurzer Zeit. Bitte in einer Stunde erneut versuchen oder direkt anrufen.", "error");
         } else {
           setStatus(status, "Senden hat gerade nicht geklappt. Bitte direkt an kontakt@ruben-wippermann.de schreiben oder anrufen.", "error");
