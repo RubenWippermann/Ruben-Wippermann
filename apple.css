@@ -635,3 +635,10 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
 
 /* Datenschutz-Hinweis unter dem Absenden-Knopf (statt Pflicht-Einwilligung) */
 .form__hinweis { margin: 12px 0 0; font-size: .875rem; line-height: 1.45; color: var(--muted); }
+
+/* Design-Audit 15.11. (T-277/278/279): Wappen-Logo nicht stauchen, ein Texteinzug auf Angebote/Unternehmen, Tippflaechen */
+.brand__logo, .footer__brand .brand__logo { flex: none; width: auto; max-width: none; object-fit: contain; aspect-ratio: 505 / 260; }
+.company--text .company__body { padding: 0; }
+.offer--nomedia .offer__body { padding: 0; }
+.subhero__crumb a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; padding: 0 4px; }
+.footer li a, .footer__bottom a { min-width: 44px; justify-content: center; }
