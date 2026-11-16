@@ -642,3 +642,23 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
 .offer--nomedia .offer__body { padding: 0; }
 .subhero__crumb a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; padding: 0 4px; }
 .footer li a, .footer__bottom a { min-width: 44px; justify-content: center; }
+
+/* RW-Raster 16.11.: Menue-Knopf schon bis 1100 px, die Links brauchen ab dort etwa 1080 px und liefen bei 901-1050 px ueber den Rand */
+@media (min-width: 901px) and (max-width: 1100px) {
+  .nav__links { display: none; }
+  .nav__links.is-open {
+    display: flex; position: absolute; top: 68px; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 4px; padding: 12px 16px 18px;
+    background: var(--bg); border-bottom: 1px solid var(--line); box-shadow: var(--shadow);
+  }
+  .nav__toggle { display: grid; place-items: center; }
+}
+
+/* RW-Raster 16.11.: keine verwaiste dritte Kachel/Schaltflaeche (2+1): Vertrauensleiste bis 960 px und Abschluss-Schaltflaechen bis 699 px untereinander */
+@media (max-width: 960px) {
+  .trust__row { flex-direction: column; flex-wrap: nowrap; align-items: stretch; gap: 10px; }
+  .trust__item { flex: 0 0 auto; max-width: none; min-width: 0; width: 100%; }
+}
+@media (max-width: 699px) {
+  .cta__actions { flex-direction: column; align-items: stretch; max-width: 420px; margin-inline: auto; }
+}
