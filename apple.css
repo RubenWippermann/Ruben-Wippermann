@@ -662,3 +662,5 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
 @media (max-width: 699px) {
   .cta__actions { flex-direction: column; align-items: stretch; max-width: 420px; margin-inline: auto; }
 }
+/* Tippfläche 16.11. (T-404): CTA-Textlink als eigenes Tippziel >= 44 px */
+.cta__link { display: inline-block; box-sizing: border-box; min-height: 44px; padding: 12px 0; line-height: 20px; }
