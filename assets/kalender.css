@@ -142,3 +142,8 @@
 .kal-recht { margin: 0 0 14px; font-size: 1rem; line-height: 1.5; color: var(--ink-soft, var(--ink)); }
 .kal-recht p { margin: 0 0 6px; }
 .kal-recht a { text-decoration: underline; text-underline-offset: 2px; }
+
+/* RW-Filter 18.11.: sechs Filterknoepfe zwischen 700 und 912 px symmetrisch 3+3 (vorher 4+2 bzw. 5+1) */
+@media (min-width: 700px) and (max-width: 913px) {
+  .kal-filter:has(> :nth-child(6):last-child) { display: grid; grid-template-columns: repeat(3, minmax(0, 220px)); justify-content: center; }
+}
