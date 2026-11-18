@@ -664,3 +664,7 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
 }
 /* Tippfläche 16.11. (T-404): CTA-Textlink als eigenes Tippziel >= 44 px */
 .cta__link { display: inline-block; box-sizing: border-box; min-height: 44px; padding: 12px 0; line-height: 20px; }
+
+/* RW-Touch 18.11.: Tippflaeche >= 44 px auch ueber 1024 px (bisher nur bis 1024 px in site.css): Logo-Link, "Mehr"-Links, Zurueck-Link der Rechtsseiten */
+.brand, .more, .legal .back, .offer-card .more { min-height: 44px; }
+.more, .legal .back, .offer-card .more { display: inline-flex; align-items: center; }
