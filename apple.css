@@ -667,4 +667,4 @@ section p a:not(.btn):not(.more), section li a:not(.btn):not(.more), .legal a, .
 
 /* RW-Touch 18.11.: Tippflaeche >= 44 px auch ueber 1024 px (bisher nur bis 1024 px in site.css): Logo-Link, "Mehr"-Links, Zurueck-Link der Rechtsseiten */
 .brand, .more, .legal .back, .offer-card .more { min-height: 44px; }
-.more, .legal .back, .offer-card .more { display: inline-flex; align-items: center; }
+.more, .legal .back { display: inline-flex; align-items: center; }
